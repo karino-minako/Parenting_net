@@ -1,0 +1,14 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+			<h2>投稿一覧</h2>
+			<%= flash[:notice] %>
+			<%= render 'index', posts: @posts %>
+			<h4>いいねランキング</h4>
+			<% @all_ranks.each do |post| %>
+	      <%= post.title %>
+      <% end %>
+		</div>
+	</div>
+</div>
+

@@ -1,0 +1,33 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+			<h1>会員情報編集</h1>
+      <%= form_with model: @user, local: true do |f| %>
+	      <div class="field">
+		      <%= f.label :名前 %>
+		      <%= f.text_field :name %>
+        </div>
+
+        <div class="field">
+          <%= f.label :メールアドレス %>
+          <%= f.text_area :email %>
+        </div>
+
+        <div class="field">
+          <%= f.label :自己紹介文 %>
+          <%= f.text_area :introduction %>
+        </div>
+
+        <div class="field">
+          <%= f.label :プロフィール写真 %>
+          <%= f.attachment_field :profile_image %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      <% end %>
+      <%= link_to "パスワードを変更する", edit_user_registration_path(@user) %>
+    </div>
+  </div>
+</div>

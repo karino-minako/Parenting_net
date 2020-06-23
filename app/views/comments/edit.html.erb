@@ -1,0 +1,11 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+			<%= render 'layouts/errors', obj: @comment %>
+			<%= form_with(model: @comment, url: post_comments_path, method: :patch, local: true) do |f| %>
+			  <%= f.text_area :comment, size: "90×5" %>
+			  <%= f.submit '変更する' %>
+			<% end %>
+		</div>
+	</div>
+</div>

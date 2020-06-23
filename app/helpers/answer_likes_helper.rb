@@ -1,0 +1,2 @@
+module AnswerLikesHelper
+end

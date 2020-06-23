@@ -1,0 +1,20 @@
+<%= form_with model: obj, local: true do |f| %>
+	<div class="field">
+		<%= f.label :タイトル %>
+		<%= f.text_field :title %>
+  </div>
+
+  <div class="field">
+    <%= f.label :写真 %>
+    <%= f.attachment_field :image %>
+  </div>
+
+  <div class="field">
+    <%= f.label :内容 %>
+    <%= f.text_area :body %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
