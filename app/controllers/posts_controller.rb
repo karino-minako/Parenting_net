@@ -9,7 +9,6 @@ class PostsController < ApplicationController
   	@post = Post.new(post_params)
   	@post.user_id = current_user.id
   	if @post.save
-      binding.pry
   	  flash[:notice] = "投稿しました！"
   	  redirect_to post_path(@post)
   	else

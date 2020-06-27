@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.post_id = @post.id
   	@comment.user_id = current_user.id
   	if @comment.save
-      flash[:notice] = "コメントしました！"
+      flash.now[:notice] = "コメントしました！"
   	end
     @comments = Comment.where(post_id: @post).order(created_at: :desc) #降順
   end
@@ -21,6 +21,7 @@ class CommentsController < ApplicationController
   def update
   	@comment = Comment.find(params[:post_id])
   	if @comment.update(comment_params)
+      flash[:notice] = "コメントを更新しました！"
   	  redirect_to post_path(@comment.post)
   	else
   	  render 'edit'
@@ -34,7 +35,7 @@ class CommentsController < ApplicationController
       redirect_to request.referer
   	end
   	@comment.destroy
-    flash[:notice] = "コメントを削除しました！"
+    flash.now[:notice] = "コメントを削除しました！"
   end
 
   def comment_like_ranks
