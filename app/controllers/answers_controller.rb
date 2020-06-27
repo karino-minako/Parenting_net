@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   	if @answer.save
   	  flash[:notice] = "コメントしました！"
   	end
-    @answers = Answer.where(question_id: @question)
+    @answers = Answer.where(question_id: @question).order(created_at: :desc) #降順
   end
 
   def edit

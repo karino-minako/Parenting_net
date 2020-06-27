@@ -12,7 +12,7 @@
 			<h4>コメント</h4>
 			<%= link_to "いいね順", comment_like_ranks_path(@post.id), remote: true %>
 	    <div class="comment_<%= @post.id %>">
-	    	<%= render 'posts/comments', comments: @post.comments %>
+	    	<%= render 'posts/comments', comments: @post.comments.order(created_at: :desc) %>
 	    </div>
 	    <div class="comment_errors">
 			  <%= render 'layouts/errors', obj: @comment %>

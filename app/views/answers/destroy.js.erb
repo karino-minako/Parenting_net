@@ -1,1 +1,1 @@
-$(".answer_<%= @question.id %>").html("<%= j( render 'questions/answers', answers: @question.answers ) %>")
+$(".answer_<%= @question.id %>").html("<%= j( render 'questions/answers', answers: @question.answers.order(created_at: :desc) ) %>")
