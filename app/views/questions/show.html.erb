@@ -2,82 +2,22 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
 			<h2>質問詳細</h2>
-			<%= flash[:notice] %>
-			<%= render 'layouts/errors', obj: @answer %>
-			<div>
-				<div>
-					<div>
-					  <%= link_to user_path(@question.user_id) do %>
-              <%= attachment_image_tag(@question.user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %>
-			  	  <% end %>
-			    </div>
-				  <div><%= link_to @question.title, question_path(@question) %></div>
-        </div>
-				<div>
-					<div><%= link_to @question.user.name, user_path(@question.user_id) %></div>
-					<div>回答数: <%= @question.answers.count %></div>
-					<div>
-				  	<% if @question.empathized_by?(current_user) %>
-				  	  <%= link_to question_empathies_path(@question, redirect_id: 0), method: :delete do %>
-				  	    <i class="fas fa-smile" aria-hidden="true" style="color: orange;"></i>
-				  	    共感した  <%= @question.empathies.count %>
-				  	  <% end %>
-				  	<% else %>
-				  	  <%= link_to question_empathies_path(@question, redirect_id: 0), method: :post do %>
-				  	    <i class="far fa-smile" aria-hidden="true"></i>
-				  	    共感した  <%= @question.empathies.count %>
-				  	  <% end %>
-				  	<% end %>
-				  </div>
-					<div><%= @question.created_at.strftime("%Y/%m/%d") %></div>
-				</div>
-				<div>
-					<% if @question.user == current_user %>
-					  <div><%= link_to "編集する", edit_question_path(@question) %></div>
-					  <div><%= link_to "削除する", question_path(@question), method: :delete, "data-confirm" => "本当に削除しますか？" 	%></div>
-					<% end %>
-				</div>
+			<div class="question_<%= @question.id %>">
+				<%= render 'questions/show', question: @question %>
 			</div>
 			<% if @question.image != nil %>
 			  <%= attachment_image_tag(@question, :image, :fill, 100, 100) %>
 			<% end %>
 			<%= @question.body %>
-      <% @answers.each do |answer| %>
-			  <div>
-			  	<div>
-			      <div>
-			      	<%= link_to user_path(answer.user) do %>
-			      		<%= attachment_image_tag answer.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-			      	<% end %>
-			      </div>
-			      <div><%= answer.answer %></div>
-			    </div>
-			    <div>
-			    	<div><%= answer.user.name %></div>
-			    	<div>
-				  	  <% if answer.answer_liked_by?(current_user) %>
-				  	    <%= link_to question_answers_answer_likes_path(answer.id, redirect_id: 0), method: :delete do %>
-				  	      <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-				  	      <%= answer.answer_likes.count %>  いいね
-				  	    <% end %>
-				  	  <% else %>
-				  	    <%= link_to destroy_answer_likes_path(answer.id, redirect_id: 0), method: :post do %>
-				  	      <i class="far fa-thumbs-up" aria-hidden="true"></i>
-				  	      <%= answer.answer_likes.count %>  いいね
-				  	    <% end %>
-				  	  <% end %>
-				    </div>
-			    	<div><%= answer.created_at.strftime("%Y/%m/%d") %></div>
-			    </div>
-			    <div>
-			    	<% if answer.user == current_user %>
-			    	  <div><%= link_to "編集する", edit_question_answers_path(answer.id) %></div>
-			    	  <div><%= link_to "削除する", question_answers_path(answer.id), method: :delete, "data-confirm" => "本当に削除しますか？" 	%></div>
-			    	<% end %>
-			    </div>
-			  </div>
-			<% end %>
-			<%= form_for [@question, @answer] do |f| %>
+			<h4>回答</h4>
+			<%= link_to "いいね順", answer_like_ranks_path(@question.id), remote: true %>
+			<div class="answer_<%= @question.id %>">
+	    	<%= render 'questions/answers', answers: @question.answers %>
+	    </div>
+	    <div class="answer_errors">
+			  <%= render 'layouts/errors', obj: @answer %>
+			</div>
+	    <%= form_with model:[@question, @answer], data: {remote: true} do |f| %>
 			  <%= f.text_area :answer, size: "90×5" %>
 			  <%= f.submit '送信' %>
 			<% end %>

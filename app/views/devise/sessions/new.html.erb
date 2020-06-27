@@ -15,13 +15,6 @@
           <%= f.password_field :password, autocomplete: "current-password", class: "col-xs-12 col-md-8 col-sm-8 col-lg-8" %>
         </div>
 
-        <% if devise_mapping.rememberable? %>
-          <div class="field col-xs-12 col-md-8 col-sm-8 col-lg-8">
-            <%= f.check_box :remember_me %>
-            <%= f.label :パスワードを次回から入力しない %>
-          </div>
-        <% end %>
-
         <div class="actions">
           <%= f.submit "ログイン", class: "col-xs-12 col-md-8 col-sm-8 col-lg-8" %>
         </div>

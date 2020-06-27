@@ -2,8 +2,9 @@
 	<div class="row">
 		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
 			<h2>質問一覧</h2>
-			<%= flash[:notice] %>
-			<%= render 'index', questions: @questions %>
+			<%= render 'questions/index', questions: @questions %>
+			<%= link_to "質問を共感した順に並べる", questions_empathies_rank_path %>
 		</div>
 	</div>
 </div>
+<%= paginate @questions %>

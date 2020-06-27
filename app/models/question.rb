@@ -8,4 +8,12 @@ class Question < ApplicationRecord
 	def empathized_by?(user)
 		empathies.where(user_id: user.id).exists?
 	end
+
+	def self.create_question_empathy_ranks
+    Question.find(Empathy.group(:question_id).order('count(question_id) desc').limit(3).pluck(:question_id))
+  end
+
+  def self.create_question_empathy_all_ranks
+    Question.find(Empathy.group(:question_id).order('count(question_id) desc').pluck(:question_id))
+  end
 end

@@ -1,0 +1,15 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+			<h2>投稿一覧（いいね順）</h2>
+			<% @like_ranks.each.with_index(1) do |post, i| %>
+				<div>第<%= i %>
+				   位
+				  <div class="post_<%= post.id %>">
+            <%= render '/posts/post', post: post %>
+          </div>
+			  </div>
+			<% end %>
+　　</div>
+	</div>
+</div>

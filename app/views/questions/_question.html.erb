@@ -1,0 +1,28 @@
+<div>
+	<div>
+		<div>
+			<%= link_to user_path(question.user_id) do %>
+				<%= attachment_image_tag(question.user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %>
+			<% end %>
+		</div>
+		<div><%= link_to question.title, question_path(question) %></div>
+	</div>
+	<div>
+		<div><%= link_to question.user.name, user_path(question.user_id) %></div>
+		<div>
+		  <% if question.empathized_by?(current_user) %>
+		  	<%= link_to question_empathies_path(question), method: :delete, remote: true do %>
+		  	  <i class="fas fa-smile" aria-hidden="true" style="color: orange;"></i>
+		  	    共感した  <%= question.empathies.count %>
+		  	<% end %>
+		  <% else %>
+		  	<%= link_to question_empathies_path(question), method: :post, remote: true do %>
+		  	  <i class="far fa-smile" aria-hidden="true"></i>
+		  	    共感した  <%= question.empathies.count %>
+		  	<% end %>
+		  <% end %>
+		</div>
+	  <div>回答数: <%= question.answers.count %></div>
+		<div><%= question.created_at.strftime("%Y/%m/%d") %></div>
+	</div>
+</div>

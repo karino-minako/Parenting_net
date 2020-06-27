@@ -8,4 +8,12 @@ class Post < ApplicationRecord
 	def post_liked_by?(user)
 		post_likes.where(user_id: user.id).exists?
 	end
+
+  def self.create_post_like_ranks
+    Post.find(PostLike.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  end
+
+  def self.create_post_like_all_ranks
+  	 Post.find(PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+  end
 end

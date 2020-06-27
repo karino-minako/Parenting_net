@@ -1,3 +1,21 @@
-<% @all_ranks.each do |post| %>
-	<%= post.title %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+			<%= flash[:notice] %>
+			<h2>投稿ランキング（いいね順）</h2>
+			<% @post_like_ranks.each.with_index(1) do |post, i| %>
+				<div>第<%= i %>
+				   位
+				  <%= post.title %>
+			  </div>
+			<% end %>
+			<h2>質問ランキング（共感した順）</h2>
+			<% @question_empathies_ranks.each.with_index(1) do |question, i| %>
+				<div>第<%= i %>
+				   位
+				  <%= question.title %>
+			  </div>
+			<% end %>
+　　</div>
+	</div>
+</div>

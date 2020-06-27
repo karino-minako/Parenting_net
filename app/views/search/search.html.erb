@@ -1,0 +1,18 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+<% if @model == 'user' %>
+  <h3>会員の検索結果 '<%= @content %>'</h3><span>(全<%= @records.count %>件)</span>
+  <%= render 'users/index', users: @records %>
+<% elsif @model == 'post' %>
+  <h3>投稿の検索結果 '<%= @content %>'</h3><span>(全<%= @records.count %>件)</span>
+  <%= render 'posts/index', posts: @records %>
+<% elsif @model == 'question' %>
+  <h3>質問の検索結果 '<%= @content %>'</h3><span>(全<%= @records.count %>件)</span>
+  <%= render 'questions/index', questions: @records %>
+<% end %>
+    </div>
+	</div>
+</div>
+
+

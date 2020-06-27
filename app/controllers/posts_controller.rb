@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   	@post = Post.new(post_params)
   	@post.user_id = current_user.id
   	if @post.save
+      binding.pry
   	  flash[:notice] = "投稿しました！"
   	  redirect_to post_path(@post)
   	else
@@ -17,14 +18,12 @@ class PostsController < ApplicationController
   end
 
   def index
-  	@posts = Post.all
-    @all_ranks = Post.find(PostLike.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  	@posts = Post.page(params[:page]).reverse_order
   end
 
   def show
   	@post = Post.find(params[:id])
     @comment = Comment.new
-    @comments = @post.comments
   end
 
   def edit
@@ -46,6 +45,10 @@ class PostsController < ApplicationController
   	post.destroy
   	flash[:notice] = "投稿を削除しました！"
   	redirect_to posts_path
+  end
+
+  def post_like_ranks
+    @like_ranks = Post.create_post_like_all_ranks
   end
 
   private

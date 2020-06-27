@@ -1,6 +1,7 @@
 class HomeController < ApplicationController
   def top
-  	@all_ranks = Post.find(PostLike.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  	@post_like_ranks = Post.create_post_like_ranks
+  	@question_empathies_ranks = Question.create_question_empathy_ranks
   end
 
   def about

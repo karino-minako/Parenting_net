@@ -1,0 +1,4 @@
+$("textarea").val("");
+$(".question_<%= @question.id %>").html("<%= j(render 'questions/question', question: @question ) %>");
+$(".answer_<%= @question.id %>").html("<%= j(render 'questions/answers', answers: @answers ) %>");
+$(".answer_errors").html("<%= j( render 'layouts/errors', obj: @answer ) %>");

@@ -1,0 +1,5 @@
+if (location.pathname == '/question') {
+  $(".question_<%= @question.id %>").html("<%= j(render 'questions/show',  question: @question ) %>")
+} else {
+  $(".question_<%= @question.id %>").html("<%= j(render 'questions/question',  question: @question ) %>")
+}

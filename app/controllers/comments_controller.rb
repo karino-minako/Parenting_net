@@ -4,15 +4,13 @@ class CommentsController < ApplicationController
   def create
   	@post = Post.find(params[:post_id])
   	@post_new = Post.new
-  	@comment = @post.comments.new(comment_params)
+    @comment = Comment.new(comment_params)
+    @comment.post_id = @post.id
   	@comment.user_id = current_user.id
   	if @comment.save
-  	  flash[:notice] = "コメントしました！"
-  	  redirect_to post_path(@post)
-  	else
-  	  @comments = Comment.where(post_id: @post.id)
-  	  render '/posts/show'
+      flash[:notice] = "コメントしました！"
   	end
+    @comments = Comment.where(post_id: @post).order(created_at: :desc) #降順
   end
 
   def edit
@@ -31,11 +29,17 @@ class CommentsController < ApplicationController
 
   def destroy
   	@comment = Comment.find(params[:post_id])
+    @post = @comment.post
   	if @comment.user != current_user
-  	  redirect_to request.referer
+      redirect_to request.referer
   	end
   	@comment.destroy
-  	redirect_to request.referer
+    flash[:notice] = "コメントを削除しました！"
+  end
+
+  def comment_like_ranks
+    @post = Post.find(params[:post_id])
+    @comments = Comment.comment_like_ranks(@post.id)
   end
 
   private

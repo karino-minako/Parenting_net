@@ -4,15 +4,13 @@ class AnswersController < ApplicationController
   def create
   	@question = Question.find(params[:question_id])
   	@question_new = Question.new
-  	@answer = @question.answers.new(answer_params)
-  	@answer.user_id = current_user.id
+  	@answer = Answer.new(answer_params)
+    @answer.question_id = @question.id
+    @answer.user_id = current_user.id
   	if @answer.save
   	  flash[:notice] = "コメントしました！"
-  	  redirect_to question_path(@question)
-  	else
-  	  @answers = Answer.where(question_id: @question.id)
-  	  render '/questions/show'
   	end
+    @answers = Answer.where(question_id: @question)
   end
 
   def edit
@@ -30,11 +28,16 @@ class AnswersController < ApplicationController
 
   def destroy
   	@answer = Answer.find(params[:question_id])
+    @question = @answer.question
   	if @answer.user != current_user
   	  redirect_to request.referer
   	end
   	@answer.destroy
-  	redirect_to request.referer
+  end
+
+  def answer_like_ranks
+    @question = Question.find(params[:question_id])
+    @answers = Answer.answer_like_ranks(@question.id)
   end
 
   private

@@ -17,13 +17,12 @@ class QuestionsController < ApplicationController
   end
 
   def index
-  	@questions = Question.all
+  	@questions = Question.page(params[:page]).reverse_order
   end
 
   def show
   	@question = Question.find(params[:id])
     @answer = Answer.new
-    @answers = @question.answers
   end
 
   def edit
@@ -45,6 +44,13 @@ class QuestionsController < ApplicationController
   	question.destroy
   	flash[:notice] = "投稿を削除しました！"
   	redirect_to questions_path
+  end
+
+  def empathy_ranks
+    @empathy_ranks = Question.create_question_empathy_all_ranks
+  end
+
+  def answer_like_ranks
   end
 
   private
