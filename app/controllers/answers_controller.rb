@@ -8,9 +8,9 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
     @answer.user_id = current_user.id
   	if @answer.save
-  	  flash.now[:notice] = "解答しました！"
+  	  flash.now[:notice] = "回答しました！"
   	end
-    @answers = Answer.where(question_id: @question).order(created_at: :desc) #降順
+    @answers = Answer.where(question_id: @question).order(created_at: :desc).page(params[:page]) #降順
   end
 
   def edit
@@ -20,7 +20,7 @@ class AnswersController < ApplicationController
   def update
   	@answer = Answer.find(params[:question_id])
   	if @answer.update(answer_params)
-      flash[:notice] = "解答を更新しました！"
+      flash[:notice] = "回答を更新しました！"
   	  redirect_to question_path(@answer.question)
   	else
   	  render 'edit'
@@ -34,7 +34,7 @@ class AnswersController < ApplicationController
   	  redirect_to request.referer
   	end
   	@answer.destroy
-    flash.now[:notice] = "解答を削除しました！"
+    flash.now[:notice] = "回答を削除しました！"
   end
 
   def answer_like_ranks

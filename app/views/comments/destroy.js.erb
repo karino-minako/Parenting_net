@@ -1,2 +1,2 @@
 $(".post_<%= @post.id %>").html("<%= j( render 'posts/show', post: @post ) %>");
-$(".comment_<%= @post.id %>").html("<%= j( render 'posts/comments', comments: @post.comments.order(created_at: :desc) ) %>")
+$(".comment_<%= @post.id %>").html("<%= j( render 'posts/comments', comments: @post.comments.order(created_at: :desc).page(params[:page]) ) %>")

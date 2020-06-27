@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   	if @comment.save
       flash.now[:notice] = "コメントしました！"
   	end
-    @comments = Comment.where(post_id: @post).order(created_at: :desc) #降順
+    @comments = Comment.where(post_id: @post).order(created_at: :desc).page(params[:page]) #降順
   end
 
   def edit
