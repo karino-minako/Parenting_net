@@ -27,6 +27,9 @@
 		<div><%= question.created_at.strftime("%Y/%m/%d") %></div>
 	</div>
 	<div>
+		  <%= render 'questions/tag', tag_list: question.tag_list %>
+	  </div>
+	<div>
 		<% if question.user == current_user %>
 			<div><%= link_to "編集する", edit_question_path(question) %></div>
 			<div><%= link_to "削除する", question_path(question), method: :delete, "data-confirm" => "本当に削除しますか？" 	%></div>

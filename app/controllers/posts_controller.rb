@@ -17,7 +17,11 @@ class PostsController < ApplicationController
   end
 
   def index
-  	@posts = Post.page(params[:page]).reverse_order
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order
+    else
+  	  @posts = Post.page(params[:page]).reverse_order
+    end
   end
 
   def show
@@ -50,8 +54,14 @@ class PostsController < ApplicationController
     @like_ranks = Post.create_post_like_all_ranks
   end
 
+  def tag_index
+    @tags = Post.tag_counts_on(:tags).order('count DESC')
+  end
+
+
+
   private
   def post_params
-  	params.require(:post).permit(:title, :body, :image)
+  	params.require(:post).permit(:title, :body, :image, :tag_list)
   end
 end

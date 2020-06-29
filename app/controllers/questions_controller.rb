@@ -17,7 +17,11 @@ class QuestionsController < ApplicationController
   end
 
   def index
-  	@questions = Question.page(params[:page]).reverse_order
+    if params[:tag_name]
+      @questions = Question.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order
+    else
+  	  @questions = Question.page(params[:page]).reverse_order
+    end
   end
 
   def show
@@ -50,11 +54,12 @@ class QuestionsController < ApplicationController
     @empathy_ranks = Question.create_question_empathy_all_ranks
   end
 
-  def answer_like_ranks
+  def tag_index
+    @tags = Question.tag_counts_on(:tags).order('count DESC')
   end
 
   private
   def question_params
-  	params.require(:question).permit(:title, :body, :image)
+  	params.require(:question).permit(:title, :body, :image, :tag_list)
   end
 end

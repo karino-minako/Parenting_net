@@ -25,4 +25,7 @@
 		<div>コメント数: <%= post.comments.count %></div>
 		<div><%= post.created_at.strftime("%Y/%m/%d") %></div>
 	</div>
+	<div>
+		<%= render 'posts/tag', tag_list: post.tag_list %>
+	</div>
 </div>

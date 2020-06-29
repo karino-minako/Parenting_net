@@ -14,6 +14,11 @@
     <%= f.text_area :body %>
   </div>
 
+  <div class="field">
+    <%= f.label :tag_list, 'タグを半角スペース区切りで入力' %>
+    <%= f.text_field :tag_list, value: obj.tag_list.join(' '), class: "form-control" %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

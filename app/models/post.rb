@@ -14,6 +14,8 @@ class Post < ApplicationRecord
   end
 
   def self.create_post_like_all_ranks
-  	 Post.find(PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+  	Post.find(PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
   end
+
+  acts_as_taggable
 end

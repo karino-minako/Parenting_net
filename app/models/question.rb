@@ -16,4 +16,6 @@ class Question < ApplicationRecord
   def self.create_question_empathy_all_ranks
     Question.find(Empathy.group(:question_id).order('count(question_id) desc').pluck(:question_id))
   end
+
+  acts_as_taggable
 end

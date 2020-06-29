@@ -31,5 +31,8 @@
 			<div><%= link_to "編集する", edit_post_path(post) %></div>
 			<div><%= link_to "削除する", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" 	%></div>
 		<% end %>
+		<div>
+		  <%= render 'posts/tag', tag_list: post.tag_list %>
+	  </div>
 	</div>
 </div>
