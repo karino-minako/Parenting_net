@@ -25,8 +25,14 @@ class QuestionsController < ApplicationController
   end
 
   def show
-  	@question = Question.find(params[:id])
-    @answer = Answer.new
+    @question = Question.find(params[:id])
+    @answers =
+      if params[:likes_order]
+        Answer.answer_like_ranks(@question.id)
+      else
+        @question.answers
+      end
+      @answer = Answer.new
   end
 
   def edit
@@ -50,10 +56,12 @@ class QuestionsController < ApplicationController
   	redirect_to questions_path
   end
 
+  # 回答を共感した順で取得するメソッド(モデルに定義)
   def empathy_ranks
     @empathy_ranks = Question.create_question_empathy_all_ranks
   end
 
+  # 投稿のタグ一覧
   def tag_index
     @tags = Question.tag_counts_on(:tags).order('count DESC')
   end

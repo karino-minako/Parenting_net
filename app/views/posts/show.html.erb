@@ -10,9 +10,9 @@
 			<% end %>
 			<%= @post.body %>
 			<h4>コメント</h4>
-			<%= link_to "いいね順", comment_like_ranks_path(@post.id), remote: true %>
-	    <div class="comment_<%= @post.id %>">
-	    	<%= render 'posts/comments', comments: @post.comments.order(created_at: :desc).page(params[:page]) %>
+			<%= link_to "いいね順", post_path(likes_order: @post.id) %>
+	    <div class="comment_<%= @post.id %>"
+	    	<%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
 	    </div>
 	    <div class="comment_errors">
 			  <%= render 'layouts/errors', obj: @comment %>

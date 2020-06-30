@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   	if @comment.save
       flash.now[:notice] = "コメントしました！"
   	end
-    @comments = Comment.where(post_id: @post).order(created_at: :desc).page(params[:page]) #降順
+    @comments = Comment.where(post_id: @post).order(created_at: :desc).page(params[:page])
   end
 
   def edit
@@ -36,11 +36,6 @@ class CommentsController < ApplicationController
   	end
   	@comment.destroy
     flash.now[:notice] = "コメントを削除しました！"
-  end
-
-  def comment_like_ranks
-    @post = Post.find(params[:post_id])
-    @comments = Comment.comment_like_ranks(@post.id)
   end
 
   private

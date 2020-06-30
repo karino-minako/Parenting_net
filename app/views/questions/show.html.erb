@@ -10,9 +10,9 @@
 			<% end %>
 			<%= @question.body %>
 			<h4>回答</h4>
-			<%= link_to "いいね順", answer_like_ranks_path(@question.id), remote: true %>
+			<%= link_to "いいね順", question_path(likes_order: @question.id) %>
 			<div class="answer_<%= @question.id %>">
-	    	<%= render 'questions/answers', answers: @question.answers.order(created_at: :desc).page(params[:page]) %>
+	    	<%= render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]) %>
 	    </div>
 	    <div class="answer_errors">
 			  <%= render 'layouts/errors', obj: @answer %>

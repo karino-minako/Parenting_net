@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions',
+    registrations: 'users/registrations'
+  }
+
   get 'searchs/search'
   get 'answers/edit'
   get 'comments/edit'
-  devise_for :users
 
   root 'home#top'
 
@@ -15,7 +19,6 @@ Rails.application.routes.draw do
   post 'comments/:id/comment_likes' => 'comment_likes#create',as: 'post_comments_comment_likes'
   delete 'comments/:id/comment_likes' => 'comment_likes#destroy',as: 'destroy_comment_likes'
   get 'posts/likes/rank' => 'posts#post_like_ranks'
-  get 'comments/likes/rank/:post_id' => 'comments#comment_like_ranks', as: 'comment_like_ranks'
   get 'post/tags' => 'posts#tag_index'
 
   resources :questions do
@@ -25,7 +28,6 @@ Rails.application.routes.draw do
   post 'answers/:id/answer_likes' => 'answer_likes#create',as: 'question_answers_answer_likes'
   delete 'answers/:id/answer_likes' => 'answer_likes#destroy', as: 'destroy_answer_likes'
   get 'questions/empathies/rank' => 'questions#empathy_ranks'
-  get 'answers/likes/rank/:question_id' => 'answers#answer_like_ranks', as: 'answer_like_ranks'
   get 'question/tags' => 'questions#tag_index'
 
   resources :users,only: [:show,:edit,:update,:index] do

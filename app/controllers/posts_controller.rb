@@ -26,7 +26,13 @@ class PostsController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
-    @comment = Comment.new
+    @comments =
+      if params[:likes_order]
+        Comment.comment_like_ranks(@post.id)
+      else
+        @post.comments
+      end
+      @comment = Comment.new
   end
 
   def edit
@@ -50,15 +56,15 @@ class PostsController < ApplicationController
   	redirect_to posts_path
   end
 
+  # 投稿をいいね順で取得するメソッド(モデルに定義)
   def post_like_ranks
     @like_ranks = Post.create_post_like_all_ranks
   end
 
+  # 投稿のタグ一覧
   def tag_index
     @tags = Post.tag_counts_on(:tags).order('count DESC')
   end
-
-
 
   private
   def post_params

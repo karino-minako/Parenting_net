@@ -10,7 +10,7 @@ class AnswersController < ApplicationController
   	if @answer.save
   	  flash.now[:notice] = "回答しました！"
   	end
-    @answers = Answer.where(question_id: @question).order(created_at: :desc).page(params[:page]) #降順
+    @answers = Answer.where(question_id: @question).order(created_at: :desc).page(params[:page])
   end
 
   def edit
@@ -35,11 +35,6 @@ class AnswersController < ApplicationController
   	end
   	@answer.destroy
     flash.now[:notice] = "回答を削除しました！"
-  end
-
-  def answer_like_ranks
-    @question = Question.find(params[:question_id])
-    @answers = Answer.answer_like_ranks(@question.id)
   end
 
   private
