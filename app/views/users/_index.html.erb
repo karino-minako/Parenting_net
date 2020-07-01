@@ -1,27 +1,29 @@
-<% users.each do |user| %>
-<div class="tbl-bdr" %>
-	<div>
-		<span>
-		  <%= link_to user_path(user) do %>
-			  <%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %>
-		  <% end %>
-		</span>
-		<span><%= user.name %></span>
-		<span class="m10"><%= link_to "詳しく見る", user_path(user) %></span>
-	</div>
-  <div>
-		<span>フォロー数：<%= user.follower.count %></span>
-		<span class="m10">フォロワー数：<%= user.followed.count %></span>
-		<span class="m10">
-		  <!-- フォローボタン -->
-			<% if current_user != user %>
-			  <% if current_user.following?(user) %>
-					<%= link_to 'フォロー外す', user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
-				<% else %>
-				  <%= link_to 'フォローする', user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
-				<% end %>
-			<% end %>
-		</span>
-  </div>
+<div class="row">
+  <% users.each do |user| %>
+    <div class="col-md-6 col-sm-12">
+    	<div class="row m10 user_box p5">
+    		<div class="col-xs-3">
+			    <%= link_to user_path(user) do %>
+				    <%= attachment_image_tag(user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %>
+			    <% end %>
+			    <%= link_to user.name, user_path(user) %>
+			  </div>
+			  <div class="col-xs-4">
+				  <!-- フォローボタン -->
+					<% if current_user != user %>
+					  <% if current_user.following?(user) %>
+							<%= link_to 'フォロー外す', user_relationships_path(user.id), method: :delete, class: "btn btn-primary" %>
+						<% else %>
+						  <%= link_to 'フォローする', user_relationships_path(user.id), method: :POST, class: "btn btn-success" %>
+						<% end %>
+					<% end %>
+			  </div>
+			  <div class="col-xs-5">
+					フォロー数：<%= user.follower.count %>
+					<br>
+	        フォロワー数：<%= user.followed.count %>
+	      </div>
+	    </div>
+	  </div>
+	<% end %>
 </div>
-<% end %>

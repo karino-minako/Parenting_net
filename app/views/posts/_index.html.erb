@@ -1,5 +1,7 @@
-<% posts.each do |post| %>
-  <div class="post_<%= post.id %>">
-    <%= render '/posts/post', post: post %>
-  </div>
-<% end %>
+<div class="row">
+  <% posts.each do |post| %>
+    <div class="post_<%= post.id %>">
+      <%= render '/posts/post', post: post %>
+    </div>
+  <% end %>
+</div>
