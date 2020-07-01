@@ -11,8 +11,8 @@
 	</div>
   <div>
 		<span>フォロー数：<%= user.follower.count %></span>
-		<span>フォロワー数：<%= user.followed.count %></span>
-		<span>
+		<span class="m10">フォロワー数：<%= user.followed.count %></span>
+		<span class="m10">
 		  <!-- フォローボタン -->
 			<% if current_user != user %>
 			  <% if current_user.following?(user) %>

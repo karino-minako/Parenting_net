@@ -1,14 +1,13 @@
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
-
 			<div>
         <span>会員詳細</span>
         <% if @user == current_user %>
           <span><%= link_to "会員情報を編集する", edit_user_path(@user) %></span>
         <% end %>
       </div>
-      <div id="tbl-bdr" %>
+      <div class="tbl-bdr" %>
         <div>
           <span>
   				  <%= link_to user_path(@user) do %>
