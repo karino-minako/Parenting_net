@@ -1,5 +1,18 @@
-<% questions.each do |question| %>
-  <div class="question_<%= question.id %>">
-    <%= render '/questions/question', question: question %>
-  </div>
-<% end %>
+<table class="table table-hover table-inverse">
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th>タイトル</th>
+			<th></th>
+			<th>タグ</th>
+		</tr>
+	</thead>
+
+  <tbody>
+		<% questions.each do |question| %>
+		  <tr class="question_<%= question.id %>">
+			  <%= render '/questions/question', question: question %>
+		  </tr>
+		<% end %>
+  </tbody>
+</table>

@@ -22,6 +22,8 @@ class PostsController < ApplicationController
     else
   	  @posts = Post.page(params[:page]).reverse_order
     end
+    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @post_like_ranks = Post.create_post_like_ranking
   end
 
   def show
@@ -54,16 +56,6 @@ class PostsController < ApplicationController
   	post.destroy
   	flash[:notice] = "投稿を削除しました！"
   	redirect_to posts_path
-  end
-
-  # 投稿をいいね順で取得するメソッド(モデルに定義)
-  def post_like_ranks
-    @like_ranks = Post.create_post_like_all_ranks
-  end
-
-  # 投稿のタグ一覧
-  def tag_index
-    @tags = Post.tag_counts_on(:tags).order('count DESC')
   end
 
   private

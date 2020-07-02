@@ -1,31 +1,29 @@
-<div class="col-md-6 col-sm-12">
-  <div class="row m10 user_box p5">
-    <div class="col-xs-4">
-			<%= link_to user_path(post.user_id) do %>
-        <%= attachment_image_tag(post.user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %>
-			<% end %>
-			<%= link_to post.user.name, user_path(post.user_id) %>
-		</div>
-		<div class="col-xs-3">
-		  <%= link_to post.title, post_path(post) %>
-		</div>
-		<div class="col-xs-3">
-		  <% if post.post_liked_by?(current_user) %>
-		  	<%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
-		  	  <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-		  	  <%= post.post_likes.count %>  いいね<br>
-		  	<% end %>
-		  <% else %>
-		  	<%= link_to post_post_likes_path(post), method: :post, remote: true do %>
-		  	  <i class="far fa-thumbs-up" aria-hidden="true"></i>
-		  	  <%= post.post_likes.count %>  いいね<br>
-		  	<% end %>
-	    <% end %>
-	    コメント数: <%= post.comments.count %><br>
-	    <%= post.created_at.strftime("%Y/%m/%d") %>
-	  </div>
-	  <div class="col-xs-2">
-		  <%= render 'posts/tag', tag_list: post.tag_list %>
-		</div>
-	</div>
-</div>
+<td>
+	<%= link_to user_path(post.user_id) do %>
+	<%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+	<% end %>
+	<%= link_to post.user.name, user_path(post.user_id) %>
+</td>
+<td>
+	<%= link_to post.title, post_path(post) %><br>
+	<%= post.created_at.strftime("%Y/%m/%d") %>
+</td>
+<td>
+	<% if post.post_liked_by?(current_user) %>
+	<%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
+	<i class="fas fa-thumbs-up" aria-hidden="true"></i>
+	<%= post.post_likes.count %><br>
+	<% end %>
+	<% else %>
+	<%= link_to post_post_likes_path(post), method: :post, remote: true do %>
+	<i class="far fa-thumbs-up" aria-hidden="true"></i>
+	<%= post.post_likes.count %><br>
+	<% end %>
+	<% end %>
+	<i class="far fa-comment" aria-hidden="true"></i> <%= post.comments.count %><br>
+</td>
+<td>
+	<% post.tag_list.each do |tag| %>
+	<%= link_to tag, posts_path(tag_name: tag) %><br>
+	<% end %>
+</td>

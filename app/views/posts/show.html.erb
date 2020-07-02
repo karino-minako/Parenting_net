@@ -1,6 +1,4 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
 			<h2>投稿詳細</h2>
 			<div class="post_<%= @post.id %>">
 			  <%= render 'posts/show', post: @post %>
@@ -11,7 +9,7 @@
 			<%= @post.body %>
 			<h4>コメント</h4>
 			<%= link_to "いいね順", post_path(likes_order: @post.id) %>
-	    <div class="comment_<%= @post.id %>"
+	    <div class="comment_<%= @post.id %>">
 	    	<%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
 	    </div>
 	    <div class="comment_errors">
@@ -21,7 +19,5 @@
 			  <%= f.text_area :comment, size: "90×5" %>
 			  <%= f.submit '送信' %>
 			<% end %>
-		</div>
-	</div>
 </div>
 

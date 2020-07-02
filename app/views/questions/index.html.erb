@@ -1,16 +1,17 @@
-<%= flash[:notice] %>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+		<div class="col-md-9 col-sm-12">
+			<%= flash[:notice] %>
 			<% if params[:tag_name].nil? %>
-			    <h2>質問一覧</h2>
+			  <h2>質問一覧</h2>
 			<% else %>
-			    <h2><%= params[:tag_name] %>一覧</h2>
+			  <h2>"<%= params[:tag_name] %>" タグのついた質問一覧</h2>
 			<% end %>
 			<%= render 'questions/index', questions: @questions %>
-			<%= link_to "質問を共感した順に並べる", questions_empathies_rank_path %>
-			<%= link_to "質問のタグ一覧を表示する", question_tags_path %>
+			<%= paginate @questions %>
+		</div>
+		<div class="col-md-3 col-sm-12">
+			<%= render 'questions/sidebar', tags: @tags, question_empathy_ranks: @question_empathy_ranks %>
 		</div>
 	</div>
 </div>
-<%= paginate @questions %>

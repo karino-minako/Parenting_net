@@ -16,8 +16,8 @@ class Post < ApplicationRecord
   end
 
   # 投稿ランキング(いいね順)を作るメソッド
-  def self.create_post_like_all_ranks
-  	Post.find(PostLike.group(:post_id).order('count(post_id) desc').pluck(:post_id))
+  def self.create_post_like_ranking
+  	Post.find(PostLike.group(:post_id).order('count(post_id) desc').limit(5).pluck(:post_id))
   end
 
   #タグ付けに必要

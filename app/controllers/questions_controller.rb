@@ -22,6 +22,8 @@ class QuestionsController < ApplicationController
     else
   	  @questions = Question.page(params[:page]).reverse_order
     end
+    @tags = Question.tag_counts_on(:tags).order('count DESC')
+    @question_empathy_ranks = Question.create_question_empathy_ranking
   end
 
   def show
@@ -54,16 +56,6 @@ class QuestionsController < ApplicationController
   	question.destroy
   	flash[:notice] = "投稿を削除しました！"
   	redirect_to questions_path
-  end
-
-  # 回答を共感した順で取得するメソッド(モデルに定義)
-  def empathy_ranks
-    @empathy_ranks = Question.create_question_empathy_all_ranks
-  end
-
-  # 投稿のタグ一覧
-  def tag_index
-    @tags = Question.tag_counts_on(:tags).order('count DESC')
   end
 
   private

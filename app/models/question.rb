@@ -16,8 +16,8 @@ class Question < ApplicationRecord
   end
 
   # 質問ランキング(共感した順)を作るメソッド
-  def self.create_question_empathy_all_ranks
-    Question.find(Empathy.group(:question_id).order('count(question_id) desc').pluck(:question_id))
+  def self.create_question_empathy_ranking
+    Question.find(Empathy.group(:question_id).order('count(question_id) desc').limit(5).pluck(:question_id))
   end
 
   #タグ付けに必要
