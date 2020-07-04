@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
   def edit
   	@comment = Comment.find(params[:post_id])
     @post = @comment.post
+    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @post_like_ranks = Post.create_post_like_ranking
   end
 
   def update

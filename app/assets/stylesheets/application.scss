@@ -24,16 +24,59 @@ main {
   height: 670px;
   color: #2D5B11;
 }
-.actions {
+
+// 共通
+
+.flash_message {
+	color: #108080;
+}
+
+.field {
 	padding-top: 20px;
 }
-.m10 {
-	margin: 10px 10px;
+.actions {
+  margin: 20px 0px 30px 0px;
 }
-.user_box {
-	border: 1px #808080 solid;
-	border-radius: 5px;
+
+// ヘッダー
+.header_logo {
+	font-family:  'Caveat', cursive;
+	line-height: 70px;
+	font-size: 35px;
 }
-.p5 {
-	padding: 5px 5px;
+
+// about画面
+
+.rogo {
+	font-size: 30px;
+	line-height: 70px;
+	margin-right: 30px;
 }
+.about_title {
+  font-size: 20px;
+  font-weight: bold;
+	border-bottom: 2px #FF9999 solid;
+	margin-bottom: 20px;
+}
+.about_heading {
+  padding-top: 20px;
+  font-size: 20px;
+	border-bottom: 2px #FF9933 solid;
+	margin-bottom: 20px;
+	font-weight: bold;
+}
+.indent {
+  text-indent: 1em;
+  padding-left: 2em;
+}
+.about_list {
+  margin: 10px 10px;
+  font-size: 20px;
+}
+.logo {
+	font-size: 30px;
+  margin-bottom: 20px;
+}
+
+
+

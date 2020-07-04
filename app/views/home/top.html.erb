@@ -1,21 +1,61 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
-			<%= flash[:notice] %>
+		<div class="col-md-9 col-sm-12">
+			<p class="flash_message"><%= flash[:notice] %></p>
 			<h2>投稿ランキング（ <i class="fas fa-thumbs-up" aria-hidden="true"></i> いいね順）</h2>
-			<% @post_like_ranks.each.with_index(1) do |post, i| %>
-				<div>第<%= i %>
-				   位
-				  <%= link_to post.title, post_path(post) %>
-			  </div>
-			<% end %>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th>順位</th>
+						<th>名前</th>
+						<th>タイトル</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @post_like_ranks.each.with_index(1) do |post, i| %>
+					<tr>
+						<td>第<%= i %>位</td>
+						<td>
+							<%= link_to user_path(post.user_id) do %>
+							<%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+							<% end %>
+							<%= link_to post.user.name, user_path(post.user_id) %>
+						</td>
+						<td>
+							<%= link_to post.title, post_path(post) %><br>
+							<%= post.created_at.strftime("%Y/%m/%d") %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
 			<h2>質問ランキング（ <i class="fas fa-smile" aria-hidden="true" style="color: orange;"></i> 共感した順）</h2>
-			<% @question_empathies_ranks.each.with_index(1) do |question, i| %>
-				<div>第<%= i %>
-				   位
-				  <%= link_to question.title, questions_path(question) %>
-			  </div>
-			<% end %>
-　　</div>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th>順位</th>
+						<th>名前</th>
+						<th>タイトル</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @question_empathies_ranks.each.with_index(1) do |question, i| %>
+					<tr>
+						<td>第<%= i %>位</td>
+						<td>
+							<%= link_to user_path(question.user_id) do %>
+							<%= attachment_image_tag(question.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+							<% end %>
+							<%= link_to question.user.name, user_path(question.user_id) %>
+						</td>
+						<td>
+							<%= link_to question.title, question_path(question) %><br>
+							<%= question.created_at.strftime("%Y/%m/%d") %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
 	</div>
 </div>

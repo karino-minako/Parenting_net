@@ -1,11 +1,17 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+		<div class="col-md-9 col-sm-12">
+			<h2>コメント編集</h2>
 			<%= render 'layouts/errors', obj: @comment %>
 			<%= form_with(model: @comment, url: post_comments_path, method: :patch, local: true) do |f| %>
-			  <%= f.text_area :comment, size: "90×5" %>
-			  <%= f.submit '変更する' %>
+			  <%= f.text_area :comment, class: "form-control" %>
+			  <div class="actions">
+			    <%= f.submit '変更する' %>
+			  </div>
 			<% end %>
 		</div>
-	</div>
+    <div class="col-md-3 col-sm-12">
+			<%= render 'posts/sidebar', post_tags: @post_tags, post_like_ranks: @post_like_ranks %>
+    </div>
+  </div>
 </div>

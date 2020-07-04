@@ -15,6 +15,8 @@ class AnswersController < ApplicationController
 
   def edit
   	@answer = Answer.find(params[:question_id])
+    @tags = Question.tag_counts_on(:tags).order('count DESC')
+    @question_empathy_ranks = Question.create_question_empathy_ranking
   end
 
   def update

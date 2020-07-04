@@ -3,6 +3,8 @@ class QuestionsController < ApplicationController
 
   def new
   	@question = Question.new
+    @tags = Question.tag_counts_on(:tags).order('count DESC')
+    @question_empathy_ranks = Question.create_question_empathy_ranking
   end
 
   def create
@@ -29,16 +31,20 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answers =
-      if params[:likes_order]
-        Answer.answer_like_ranks(@question.id)
-      else
-        @question.answers
-      end
-      @answer = Answer.new
+    if params[:likes_order]
+      Answer.answer_like_ranks(@question.id)
+    else
+      @question.answers
+    end
+    @answer = Answer.new
+    @tags = Question.tag_counts_on(:tags).order('count DESC')
+    @question_empathy_ranks = Question.create_question_empathy_ranking
   end
 
   def edit
   	@question = Question.find(params[:id])
+    @tags = Question.tag_counts_on(:tags).order('count DESC')
+    @question_empathy_ranks = Question.create_question_empathy_ranking
   end
 
   def update

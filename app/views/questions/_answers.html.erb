@@ -1,26 +1,36 @@
-<% answers.each do |answer| %>
-	<div>
-		<div>
-			<div>
-				<%= link_to user_path(answer.user) do %>
-				  <%= attachment_image_tag answer.user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size: "50x50" %>
-				<% end %>
-			</div>
-			<div><%= answer.answer %></div>
-		</div>
-		<div>
-			<div><%= answer.user.name %></div>
-			<div class="answer_like_<%= answer.id %>">
-        <%= render 'questions/like', answer: answer %>
-      </div>
-			<div><%= answer.created_at.strftime("%Y/%m/%d") %></div>
-		</div>
-		<div>
-			<% if answer.user == current_user %>
-			  <div><%= link_to "編集する", edit_question_answers_path(answer) %></div>
-			  <div><%= link_to "削除する", question_answers_path(answer), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %></div>
-			<% end %>
-		</div>
-	</div>
-<% end %>
+<table class="table table-hover table-inverse">
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th>コメント</th>
+			<th colspan="2"></th>
+		</tr>
+	</thead>
+
+	<tbody>
+    <% answers.each do |answer| %>
+      <tr>
+      	<td>
+					<%= link_to user_path(answer.user) do %>
+					  <%= attachment_image_tag(answer.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+					<% end %>
+					<%= link_to answer.user.name, user_path(answer.user) %>
+				</td>
+				<td>
+					<%= answer.answer %><br>
+					<%= answer.created_at.strftime("%Y/%m/%d") %>
+				</td>
+				<td class="answer_like_<%= answer.id %>">
+	        <%= render 'questions/like', answer: answer %>
+	      </td>
+	      <td>
+	      	<% if answer.user == current_user %>
+					  <div><%= link_to "編集する", edit_question_answers_path(answer) %></div>
+					  <div><%= link_to "削除する", question_answers_path(answer), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %></div>
+					<% end %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
 <%= paginate answers %>

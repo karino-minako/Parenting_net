@@ -1,41 +1,53 @@
-<%= flash[:notice] %>
-<div class="row">
-  <div class="col-xs-3">
-    <div>
-			<%= link_to user_path(post.user_id) do %>
-        <%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
-			<% end %>
-		</div>
-		<div>
-		  <%= link_to post.title, post_path(post) %><br>
-		</div>
-			<%= link_to post.user.name, user_path(post.user_id) %>
-		</div>
-		<div class="col-xs-4">
-		  <%= link_to post.title, post_path(post) %><br>
-		  <%= post.created_at.strftime("%Y/%m/%d") %>
-		</div>
-		<div class="col-xs-2">
-			<% if post.post_liked_by?(current_user) %>
-				<%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
-				  <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-				  <%= post.post_likes.count %>  いいね<br>
+<p class="flash_message"><%= flash[:notice] %></p>
+<table class="table table-hover table-inverse">
+	<thead>
+		<tr>
+			<th>名前</th>
+			<th>タイトル</th>
+			<th></th>
+			<th>タグ</th>
+			<th></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td>
+				<%= link_to user_path(post.user_id) do %>
+	        <%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
 				<% end %>
-			<% else %>
-				<%= link_to post_post_likes_path(post), method: :post, remote: true do %>
-				  <i class="far fa-thumbs-up" aria-hidden="true"></i>
-				  <%= post.post_likes.count %>  いいね<br>
+			  <%= link_to post.user.name, user_path(post.user_id) %>
+			</td>
+			<td>
+        <%= post.title %><br>
+        <%= post.created_at.strftime("%Y/%m/%d") %>
+      </td>
+      <td>
+      	<% if post.post_liked_by?(current_user) %>
+				  <%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
+				    <i class="fas fa-thumbs-up" aria-hidden="true"></i>
+			 	    <%= post.post_likes.count %>  いいね<br>
 				<% end %>
-			<% end %>
-		  <i class="far fa-comment" aria-hidden="true"></i> コメント数: <%= post.comments.count %>
-		</div>
-		<div class="col-xs-3">
-		  <% post.tag_list.each do |tag| %>
-        <%= link_to tag, posts_path(tag_name: tag) %><br>
-      <% end %>
-    </div>
-</div>
-<% if post.user == current_user %>
-  <%= link_to "編集する", edit_post_path(post) %>
-  <%= link_to "削除する", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" 	%>
-<% end %>
+			  <% else %>
+				  <%= link_to post_post_likes_path(post), method: :post, remote: true do %>
+				    <i class="far fa-thumbs-up" aria-hidden="true"></i>
+				    <%= post.post_likes.count %>  いいね<br>
+				  <% end %>
+			  <% end %>
+		    <i class="far fa-comment" aria-hidden="true"></i> コメント数: <%= post.comments.count %>
+		  </td>
+		  <td>
+		  	<% post.tag_list.each do |tag| %>
+          <%= link_to tag, posts_path(tag_name: tag) %><br>
+        <% end %>
+      </td>
+      <td>
+      	<% if post.user == current_user %>
+				  <%= link_to "編集する", edit_post_path(post) %><br>
+				  <%= link_to "削除する", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" 	%>
+				<% end %>
+			</td>
+		</tr>
+	</tbody>
+</table>
+

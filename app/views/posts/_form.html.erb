@@ -1,7 +1,7 @@
 <%= form_with model: obj, local: true do |f| %>
 	<div class="field">
 		<%= f.label :タイトル %>
-		<%= f.text_field :title %>
+		<%= f.text_field :title, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -11,7 +11,7 @@
 
   <div class="field">
     <%= f.label :内容 %>
-    <%= f.text_area :body %>
+    <%= f.text_area :body, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -20,6 +20,6 @@
   </div>
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-primary col-xs-12'%><br>
   </div>
 <% end %>

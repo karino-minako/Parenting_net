@@ -1,44 +1,53 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
-			<div>
-        <span>会員詳細</span>
-        <% if @user == current_user %>
-          <span><%= link_to "会員情報を編集する", edit_user_path(@user) %></span>
-        <% end %>
-      </div>
-      <div class="tbl-bdr" %>
-        <div>
-          <span>
-  				  <%= link_to user_path(@user) do %>
-              <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %>
-  			    <% end %>
-  			  </span>
-  			  <span><%= @user.name %></span>
-        </div>
-        <div>
-          <span>自己紹介文</span>
-        </div>
-        <div><%= @user.introduction %></div>
-        <div>
-          <span>フォロー数：<%= link_to @user.follower.count, user_follows_path(@user) %></span>
-          <span>フォロワー数：<%= link_to @user.followed.count, user_followers_path(@user) %></span>
-          <span>
-            <!-- フォローボタン -->
-            <% if current_user != @user %>
-              <% if current_user.following?(@user) %>
-                <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
-              <% else %>
-                <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
-              <% end %>
-            <% end %>
-          </span>
-        </div>
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <h2>会員詳細</h2>
+      <p class="flash_message"><%= flash[:notice] %></p>
+      <% if @user == current_user %>
+        <span><%= link_to "会員情報を編集する", edit_user_path(@user) %></span>
+      <% end %>
 
-      <h4>投稿一覧</h4>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>自己紹介文</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+    				  <%= link_to user_path(@user) do %>
+                <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %><br>
+    			    <% end %>
+              <%= @user.name %>
+            </td>
+            <td>
+              <%= @user.introduction %>
+            </td>
+            <td>
+              フォロー数：<%= link_to @user.follower.count, user_follows_path(@user) %><br>
+              フォロワー数：<%= link_to @user.followed.count, user_followers_path(@user) %>
+            </td>
+            <td>
+              <!-- フォローボタン -->
+              <% if current_user != @user %>
+                <% if current_user.following?(@user) %>
+                  <%= link_to 'フォロー外す', user_relationships_path(@user.id), method: :delete, class: "btn btn-primary" %>
+                <% else %>
+                  <%= link_to 'フォローする', user_relationships_path(@user.id), method: :POST, class: "btn btn-success" %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>投稿一覧</h3>
       <%= render 'posts/index', posts: @posts %>
 
-      <h4>質問一覧</h4>
+      <h3>質問一覧</h3>
       <%= render 'questions/index', questions: @questions %>
     </div>
   </div>

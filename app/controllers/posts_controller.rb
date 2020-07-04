@@ -3,6 +3,8 @@ class PostsController < ApplicationController
 
   def new
   	@post = Post.new
+    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @post_like_ranks = Post.create_post_like_ranking
   end
 
   def create
@@ -35,10 +37,14 @@ class PostsController < ApplicationController
         @post.comments
       end
       @comment = Comment.new
+      @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+      @post_like_ranks = Post.create_post_like_ranking
   end
 
   def edit
   	@post = Post.find(params[:id])
+    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @post_like_ranks = Post.create_post_like_ranking
   end
 
   def update

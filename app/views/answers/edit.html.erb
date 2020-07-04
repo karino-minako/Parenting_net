@@ -1,12 +1,17 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+		<div class="col-md-9 col-sm-12">
+			<h2>回答編集</h2>
 			<%= render 'layouts/errors', obj: @answer %>
 			<%= form_with(model: @answer, url: question_answers_path, method: :patch, local: true) do |f| %>
 			  <%= f.text_area :answer, size: "90×5" %>
-			  <%= f.submit '変更する' %>
+			  <div class="actions">
+			    <%= f.submit '変更する' %>
+			  </div>
 			<% end %>
 		</div>
+	  <div class="col-md-3 col-sm-12">
+			<%= render 'questions/sidebar', tags: @tags, question_empathy_ranks: @question_empathy_ranks %>
+		</div>
 	</div>
-</div>
 </div>

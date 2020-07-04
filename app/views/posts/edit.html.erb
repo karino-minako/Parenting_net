@@ -1,9 +1,12 @@
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12 col-md-8 col-md-offset-4 col-sm-8 col-sm-offset-4 col-lg-8 col-lg-offset-4">
+		<div class="col-md-9 col-sm-12">
       <%= render 'layouts/errors', obj: @post %>
 			<h2>新規投稿</h2>
       <%= render 'posts/form', obj: @post %>
+    </div>
+    <div class="col-md-3 col-sm-12">
+			<%= render 'posts/sidebar', post_tags: @post_tags, post_like_ranks: @post_like_ranks %>
     </div>
   </div>
 </div>
