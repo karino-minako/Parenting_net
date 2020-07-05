@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get 'searchs/search'
+  get '/search', to: 'search#search'
   get 'answers/edit'
   get 'comments/edit'
 
@@ -32,5 +32,4 @@ Rails.application.routes.draw do
     get 'followers' => 'relationships#followed', as: 'followers'
   end
 
-  get '/search', to: 'search#search'
 end

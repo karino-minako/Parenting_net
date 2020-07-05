@@ -15,7 +15,7 @@ class Question < ApplicationRecord
     Question.find(Empathy.group(:question_id).order('count(question_id) desc').limit(3).pluck(:question_id))
   end
 
-  # 質問ランキング(共感した順)を作るメソッド
+  # 質問ランキング(共感した順)を作るメソッド(5位まで)
   def self.create_question_empathy_ranking
     Question.find(Empathy.group(:question_id).order('count(question_id) desc').limit(5).pluck(:question_id))
   end

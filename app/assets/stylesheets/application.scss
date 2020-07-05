@@ -20,9 +20,7 @@
 @import 'font-awesome';
 
 main {
-  padding-top: 40px;
-  height: 670px;
-  color: #2D5B11;
+  padding-top: 20px;
 }
 
 // 共通
@@ -31,18 +29,18 @@ main {
 	color: #108080;
 }
 
-.field {
-	padding-top: 20px;
-}
-.actions {
-  margin: 20px 0px 30px 0px;
-}
-
 // ヘッダー
+
+header {
+	height: 70px;
+}
 .header_logo {
 	font-family:  'Caveat', cursive;
 	line-height: 70px;
 	font-size: 35px;
+}
+.navbar_right_icon {
+	margin-top: 10px;
 }
 
 // about画面
@@ -59,10 +57,9 @@ main {
 	margin-bottom: 20px;
 }
 .about_heading {
-  padding-top: 20px;
   font-size: 20px;
 	border-bottom: 2px #FF9933 solid;
-	margin-bottom: 20px;
+	margin: 20px 0px 20px 0px;
 	font-weight: bold;
 }
 .indent {
@@ -78,5 +75,51 @@ main {
   margin-bottom: 20px;
 }
 
+// 入力フォーム
 
+.field {
+	padding-top: 20px;
+}
+.actions {
+  padding: 20px 0px 60px 0px;
+}
 
+// サイドバー
+.sidebar-heading {
+  padding: 60px 0px 10px 0px;
+}
+
+//投稿・質問詳細画面
+
+.content-heading {
+  text-indent: 1em;
+	font-weight: bold;
+	margin: 20px 0px 10px 0px;
+}
+.blank {
+	margin-bottom: 20px;
+}
+.comment-answer {
+	margin-top: 60px;
+}
+.border {
+	border-bottom: 2px silver solid;
+}
+
+// トップページ・ユーザー詳細画面のランキング
+
+.th-01 {
+	width: 20%;
+}
+.th-02 {
+	width: 30%;
+}
+.th-03 {
+	width: 50%;
+}
+.th-04 {
+	width: 40%;
+}
+.th-05 {
+	width: 10%;
+}
