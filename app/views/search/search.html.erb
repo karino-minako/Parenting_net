@@ -5,10 +5,10 @@
         <h3>会員の検索結果 ' <%= @content %> '</h3><span>(全<%= @records.count %>件)</span>
         <%= render 'users/index', users: @records %>
       <% elsif @model == 'post' %>
-        <h3>投稿の検索結果 '<%= @content %>'</h3><span>(全<%= @records.count %>件)</span>
+        <h3>投稿の検索結果 ' <%= @content %> '</h3><span>(全<%= @records.count %>件)</span>
         <%= render 'posts/index', posts: @records %>
       <% elsif @model == 'question' %>
-        <h3>質問の検索結果 '<%= @content %>'</h3><span>(全<%= @records.count %>件)</span>
+        <h3>質問の検索結果 ' <%= @content %> '</h3><span>(全<%= @records.count %>件)</span>
         <%= render 'questions/index', questions: @records %>
       <% end %>
     </div>

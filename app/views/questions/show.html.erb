@@ -2,9 +2,25 @@
   <div class="row">
 	  <div class="col-md-9 col-sm-12">
 			<h2>質問詳細</h2>
-			<div class="question_<%= @question.id %>">
-				<%= render 'questions/show', question: @question %>
-			</div>
+			<p class="flash_message"><%= flash[:notice] %></p>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th>名前</th>
+						<th>タイトル</th>
+						<th></th>
+						<th>タグ</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr class="question_<%= @question.id %>">
+						<%= render 'questions/show', question: @question %>
+					</tr>
+			  </tbody>
+      </table>
+
 			<% if @question.image != nil %>
 			  <%= attachment_image_tag(@question, :image, :fill, 100, 100) %><br>
 			<% end %>

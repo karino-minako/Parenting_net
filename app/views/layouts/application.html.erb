@@ -48,7 +48,7 @@
       </div>
     </header>
     <% if user_signed_in? %>
-      <div class="search-form" style="margin-top: 40px; text-align: center;">
+      <div class="search-form">
         <%= form_tag(search_path, method: :get) do %>
           <%= text_field_tag 'search[content]' %>
           <%= select_tag 'search[model]', options_for_select({ "会員" => "user", "投稿" => "post", "質問" => "question"}) %>

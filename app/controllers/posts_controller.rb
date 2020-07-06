@@ -30,15 +30,10 @@ class PostsController < ApplicationController
 
   def show
   	@post = Post.find(params[:id])
-    @comments =
-      if params[:likes_order]
-        Comment.comment_like_ranks(@post.id)
-      else
-        @post.comments
-      end
-      @comment = Comment.new
-      @post_tags = Post.tag_counts_on(:tags).order('count DESC')
-      @post_like_ranks = Post.create_post_like_ranking
+    @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
+    @comment = Comment.new
+    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @post_like_ranks = Post.create_post_like_ranking
   end
 
   def edit

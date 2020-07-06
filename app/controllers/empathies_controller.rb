@@ -1,8 +1,10 @@
 class EmpathiesController < ApplicationController
   def create
   	@question = Question.find(params[:question_id])
-  	empathy = @question.empathies.new(user_id: current_user.id)
-  	empathy.save
+    unless @question.empathized_by?(current_user)
+  	  empathy = @question.empathies.new(user_id: current_user.id)
+  	  empathy.save
+    end
   end
 
   def destroy

@@ -10,7 +10,7 @@
 
   <tbody>
 		<% questions.each do |question| %>
-		  <tr class="question_<%= question.id %>">
+		  <tr class="questions_<%= question.id %>">
 			  <%= render '/questions/question', question: question %>
 		  </tr>
 		<% end %>

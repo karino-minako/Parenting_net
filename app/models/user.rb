@@ -15,10 +15,14 @@ class User < ApplicationRecord
   has_many :comment_likes, dependent: :destroy
   has_many :answer_likes, dependent: :destroy
 
-  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy # フォロー取得
-  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy # フォロワー取得
-  has_many :following_user, through: :follower, source: :followed # 自分がフォローしている人
-  has_many :follower_user, through: :followed, source: :follower # 自分をフォローしている人
+  # フォロー取得
+  has_many :follower, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  # フォロワー取得
+  has_many :followed, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+  # 自分がフォローしている人
+  has_many :following_user, through: :follower, source: :followed
+  # 自分をフォローしている人
+  has_many :follower_user, through: :followed, source: :follower
 
   def follow(user_id)
     follower.create(followed_id: user_id)

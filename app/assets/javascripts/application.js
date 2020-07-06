@@ -17,7 +17,3 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
-
-$(document).on('ready', function () {
-  console.log('test')
-});

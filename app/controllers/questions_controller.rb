@@ -30,12 +30,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
-    @answers =
-    if params[:likes_order]
-      Answer.answer_like_ranks(@question.id)
-    else
-      @question.answers
-    end
+    @answers = params[:likes_order].present? ? Answer.answer_like_ranks(@question.id) : @question.answers
     @answer = Answer.new
     @tags = Question.tag_counts_on(:tags).order('count DESC')
     @question_empathy_ranks = Question.create_question_empathy_ranking

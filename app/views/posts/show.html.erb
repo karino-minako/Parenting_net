@@ -2,9 +2,25 @@
   <div class="row">
 	  <div class="col-md-9 col-sm-12">
 			<h2>投稿詳細</h2>
-			<div class="post_<%= @post.id %>">
-			  <%= render 'posts/show', post: @post %>
-			</div>
+			<p class="flash_message"><%= flash[:notice] %></p>
+			<table class="table table-hover table-inverse">
+				<thead>
+					<tr>
+						<th>名前</th>
+						<th>タイトル</th>
+						<th></th>
+						<th>タグ</th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<tr class="post_<%= @post.id %>">
+					  <%= render 'posts/show', post: @post %>
+					</tr>
+				</tbody>
+      </table>
+
 			<% if @post.image != nil %>
 			  <%= attachment_image_tag(@post, :image, :fill, 400, 300) %><br>
 			<% end %>

@@ -10,7 +10,7 @@
 
 	<tbody>
 		<% posts.each do |post| %>
-		  <tr class="post_<%= post.id %>">
+		  <tr class="posts_<%= post.id %>">
 			  <%= render '/posts/post', post: post %>
 		  </tr>
 		<% end %>
