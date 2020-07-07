@@ -1,11 +1,12 @@
 class Comment < ApplicationRecord
-	belongs_to :user
-	belongs_to :post
+  belongs_to :user
+  belongs_to :post
   validates :comment, presence: true
   has_many :comment_likes, dependent: :destroy
+
   def comment_liked_by?(user)
-		comment_likes.where(user_id: user.id).exists?
-	end
+    comment_likes.where(user_id: user.id).exists?
+  end
 
   # コメントをいいね順に並べるメソッド
   def self.comment_like_ranks(post_id)

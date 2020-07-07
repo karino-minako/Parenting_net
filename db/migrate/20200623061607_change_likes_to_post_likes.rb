@@ -1,5 +1,5 @@
 class ChangeLikesToPostLikes < ActiveRecord::Migration[5.2]
   def change
-  	rename_table :likes, :post_likes
+    rename_table :likes, :post_likes
   end
 end

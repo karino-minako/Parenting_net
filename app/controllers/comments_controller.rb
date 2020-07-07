@@ -2,48 +2,41 @@ class CommentsController < ApplicationController
   before_action :authenticate_user!
 
   def create
-  	@post = Post.find(params[:post_id])
-  	@post_new = Post.new
+    @post = Post.find(params[:post_id])
+    @post_new = Post.new
     @comment = Comment.new(comment_params)
     @comment.post_id = @post.id
-  	@comment.user_id = current_user.id
-  	if @comment.save
-      flash.now[:notice] = "コメントしました！"
-  	end
+    @comment.user_id = current_user.id
+    @comment.save
     @comments = Comment.where(post_id: @post).order(created_at: :desc).page(params[:page])
   end
 
   def edit
-  	@comment = Comment.find(params[:post_id])
-    @post = @comment.post
-    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
-    @post_like_ranks = Post.create_post_like_ranking
+    @comment = Comment.find(params[:post_id])
   end
 
   def update
-  	@comment = Comment.find(params[:post_id])
-  	if @comment.update(comment_params)
-      flash[:notice] = "コメントを更新しました！"
-  	  redirect_to post_path(@comment.post)
-  	else
-  	  render 'edit'
-  	end
+    @comment = Comment.find(params[:post_id])
+    if @comment.update(comment_params)
+      redirect_to post_path(@comment.post)
+    else
+      render 'edit'
+    end
   end
 
   def destroy
-  	@comment = Comment.find(params[:post_id])
+    @comment = Comment.find(params[:post_id])
     @post = @comment.post
-  	if @comment.user != current_user
+    if @comment.user != current_user
       redirect_to request.referer
-  	end
-  	@comment.destroy
-    flash.now[:notice] = "コメントを削除しました！"
+    end
+    @comment.destroy
   end
 
   private
 
   def comment_params
-  	params.require(:comment).permit(:comment)
+    params.require(:comment).permit(:comment)
   end
 
 end

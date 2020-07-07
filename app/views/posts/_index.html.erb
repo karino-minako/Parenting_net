@@ -1,18 +1,18 @@
 <table class="table table-hover table-inverse">
-	<thead>
-		<tr>
-			<th class="th-01">名前</th>
-			<th class="th-04">タイトル</th>
-			<th class="th-05"></th>
-			<th class="th-02">タグ</th>
-		</tr>
-	</thead>
+  <thead>
+    <tr>
+      <th class="th-01">名前</th>
+      <th class="th-04">タイトル</th>
+      <th class="th-05"></th>
+      <th class="th-02">タグ</th>
+    </tr>
+  </thead>
 
-	<tbody>
-		<% posts.each do |post| %>
-		  <tr class="posts_<%= post.id %>">
-			  <%= render '/posts/post', post: post %>
-		  </tr>
-		<% end %>
-	</tbody>
+  <tbody>
+    <% posts.each do |post| %>
+      <tr class="posts_<%= post.id %>">
+        <%= render '/posts/post', post: post %>
+      </tr>
+      <% end %>
+  </tbody>
 </table>

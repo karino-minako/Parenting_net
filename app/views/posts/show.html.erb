@@ -1,51 +1,51 @@
 <div class="container">
   <div class="row">
-	  <div class="col-md-9 col-sm-12">
-			<h2>投稿詳細</h2>
-			<p class="flash_message"><%= flash[:notice] %></p>
-			<table class="table table-hover table-inverse">
-				<thead>
-					<tr>
-						<th>名前</th>
-						<th>タイトル</th>
-						<th></th>
-						<th>タグ</th>
-						<th></th>
-					</tr>
-				</thead>
+    <div class="col-md-9 col-sm-12">
+      <h2>投稿詳細</h2>
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>タイトル</th>
+            <th></th>
+            <th>タグ</th>
+            <th></th>
+          </tr>
+        </thead>
 
-				<tbody>
-					<tr class="post_<%= @post.id %>">
-					  <%= render 'posts/show', post: @post %>
-					</tr>
-				</tbody>
+        <tbody>
+          <tr class="post_<%= @post.id %>">
+            <%= render 'posts/show', post: @post %>
+          </tr>
+        </tbody>
       </table>
 
-			<% if @post.image != nil %>
-			  <%= attachment_image_tag(@post, :image, :fill, 400, 300) %><br>
-			<% end %>
-			<div class="content-heading h5">内容</div>
-			<div class="blank"><%= @post.body %></div>
-			<div class="border"></div>
-			<div class="comment-answer h3">コメントする</div>
-			<%= form_with model:[@post, @comment], data: {remote: true} do |f| %>
-			  <%= f.text_area :comment, class: "form-control" %>
-			  <div class="actions">
-			    <%= f.submit '送信', class: 'btn btn-primary col-xs-12'%>
-			  </div>
-			<% end %>
-			<div class="blank h3">コメント一覧</div>
-			<div class="blank"><%= link_to "コメントをいいね順に並べる", post_path(likes_order: @post.id) %></div>
-	    <div class="comment_<%= @post.id %>">
-	    	<%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
-	    </div>
-	    <div class="comment_errors">
-			  <%= render 'layouts/errors', obj: @comment %>
-			</div>
-		</div>
-		<div class="col-md-3 col-sm-12">
-			<%= render 'posts/sidebar', post_tags: @post_tags, post_like_ranks: @post_like_ranks %>
-		</div>
-	</div>
+      <% if @post.image != nil %>
+        <%= attachment_image_tag(@post, :image, :fill, 400, 300) %><br>
+      <% end %>
+      <div class="content-heading h5">内容</div>
+      <div class="blank"><%= @post.body %></div>
+      <div class="border"></div>
+      <div class="comment-answer h3">コメントする</div>
+      <div class="comment_errors">
+        <%= render 'layouts/errors', obj: @comment %>
+      </div>
+      <%= form_with model:[@post, @comment], data: {remote: true} do |f| %>
+        <%= f.text_area :comment, class: "form-control" %>
+        <div class="actions">
+          <%= f.submit '送信', class: 'btn btn-primary col-xs-12'%>
+        </div>
+      <% end %>
+      <div class="blank h3">コメント一覧</div>
+      <div class="blank"><%= link_to "コメントをいいね順に並べる", post_path(likes_order: @post.id) %></div>
+      <div class="comment_<%= @post.id %>">
+        <%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
+      </div>
+    </div>
+
+    <div class="col-md-3 col-sm-12">
+      <%= render 'posts/sidebar', post_tags: @post_tags, post_like_ranks: @post_like_ranks %>
+    </div>
+  </div>
 </div>
 

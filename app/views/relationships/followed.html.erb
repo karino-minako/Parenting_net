@@ -1,12 +1,12 @@
 <div class="container">
-	<div class="row">
-		<div class="col-md-9 col-sm-12">
-		  <h2><%= @user.name %> さんのFollower一覧</h2>
-		  <% if @users.count > 0 %>
-		    <%= render 'users/index', users: @users %>
-		  <% else %>
-		    <p>ユーザーはいません</p>
-		  <% end %>
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <h2><%= @user.name %> さんのFollower一覧</h2>
+      <% if @users.count > 0 %>
+        <%= render 'users/index', users: @users %>
+      <% else %>
+        <p>会員はいません</p>
+      <% end %>
     </div>
   </div>
 </div>

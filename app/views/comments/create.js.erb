@@ -1,4 +1,4 @@
 $("textarea").val("");
 $(".post_<%= @post.id %>").html("<%= j( render 'posts/show', post: @post ) %>");
-$(".comment_<%= @post.id %>").html("<%= j( render 'posts/comments', comments: @comments ) %>");
 $(".comment_errors").html("<%= j( render 'layouts/errors', obj: @comment ) %>");
+$(".comment_<%= @post.id %>").html("<%= j( render 'posts/comments', comments: @comments ) %>");
