@@ -30,7 +30,8 @@ Rails.application.configure do
 
   # Store uploaded files on the local file system in a temporary directory
   config.active_storage.service = :test
-
+  #Thanks_mailの送信の必要性によって変更する true:する, false:しない
+  config.action_mailer.perform_deliveries = false
   config.action_mailer.perform_caching = false
 
   # Tell Action Mailer not to deliver emails to the real world.
