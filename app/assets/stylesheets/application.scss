@@ -112,6 +112,14 @@ header {
 .border {
   border-bottom: 2px silver solid;
 }
+.image {
+  position: relative;
+}
+.image img {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+}
 
 // トップページ・ユーザー詳細画面のランキング
 

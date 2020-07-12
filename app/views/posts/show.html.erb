@@ -21,7 +21,9 @@
       </table>
 
       <% if @post.image != nil %>
-        <%= attachment_image_tag(@post, :image, :fill, 400, 300) %><br>
+        <div class="image">
+          <%= attachment_image_tag @post, :image %>
+        </div>
       <% end %>
       <div class="content-heading h5">内容</div>
       <div class="blank"><%= @post.body %></div>
