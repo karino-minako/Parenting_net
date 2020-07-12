@@ -3,7 +3,37 @@
     <div class="col-md-9 col-sm-12">
       <%= render 'layouts/errors', obj: @post %>
       <h2>投稿編集</h2>
-      <%= render 'posts/form', obj: @post %>
+      <%= form_with model: @post, local: true do |f| %>
+        <div class="field">
+          <%= f.label :タイトル %>
+          <%= f.text_field :title, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :投稿されている写真 %>
+          <% if @post.image != nil %>
+            <div class="image">
+              <%= attachment_image_tag @post, :image %><br>
+            </div>
+          <% end %>
+          <%= f.label :写真 %>
+          <%= f.attachment_field :image %>
+        </div>
+
+        <div class="field">
+          <%= f.label :内容 %>
+          <%= f.text_area :body, class: "form-control" %>
+        </div>
+
+        <div class="field">
+          <%= f.label :tag_list, 'タグを半角スペース区切りで入力' %>
+          <%= f.text_field :tag_list, value: @post.tag_list.join(' '), class: "form-control" %>
+        </div>
+
+        <div class="actions">
+          <%= f.submit '変更する', class: 'btn btn-primary col-xs-12'%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>
