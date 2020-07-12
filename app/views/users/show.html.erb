@@ -25,7 +25,7 @@
               <%= @user.name %>
             </td>
             <td>
-              <%= @user.introduction %>
+              <%= simple_format @user.introduction %>
             </td>
             <td>
               フォロー数：<%= link_to @user.follower.count, user_follows_path(@user) %><br>

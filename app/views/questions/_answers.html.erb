@@ -17,7 +17,7 @@
           <%= link_to answer.user.name, user_path(answer.user) %>
         </td>
         <td>
-          <%= answer.answer %><br>
+          <%= simple_format answer.answer %><br>
           <%= answer.created_at.strftime("%Y/%m/%d") %>
         </td>
         <td class="answer_like_<%= answer.id %>">
