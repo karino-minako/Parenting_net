@@ -29,6 +29,11 @@ main {
   color: #108080;
 }
 
+.tag {
+  display: inline-block;
+  margin: 5px;
+}
+
 // ヘッダー
 
 header {
@@ -91,9 +96,6 @@ header {
 // サイドバー
 .sidebar-heading {
   padding: 60px 0px 10px 0px;
-}
-.tag {
-  margin: 20px;
 }
 
 //投稿・質問詳細画面

@@ -24,6 +24,6 @@
 </td>
 <td>
   <% post.tag_list.each do |tag| %>
-    <%= link_to tag, posts_path(tag_name: tag), class: 'btn btn-success'%><br>
+    <%= link_to tag, posts_path(tag_name: tag), class: 'tag btn btn-success' %><br>
   <% end %>
 </td>
