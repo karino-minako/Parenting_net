@@ -37,7 +37,8 @@
         </div>
       <% end %>
       <div class="blank h3">コメント一覧</div>
-      <div class="blank"><%= link_to "コメントをいいね順に並べる", post_path(likes_order: @post.id) %></div>
+      <div class="blank"><%= link_to "コメントをいいね順に並べる", post_path(likes_order: @post.id) %>
+      </div>
       <div class="comment_<%= @post.id %>">
         <%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
       </div>
