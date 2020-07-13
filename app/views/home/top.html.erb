@@ -68,7 +68,7 @@
                 <%= link_to question.user.name, user_path(question.user_id) %>
               </td>
               <td>
-                <%= link_to question.title, question_path(question) %><br>
+                <%= link_to question.title, question_path(question) %>
                 <%= question.created_at.strftime("%Y/%m/%d") %>
               </td>
               <td>
