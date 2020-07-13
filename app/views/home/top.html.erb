@@ -68,12 +68,12 @@
                 <%= link_to question.user.name, user_path(question.user_id) %>
               </td>
               <td>
-                <%= link_to question.title, question_path(question) %>
+                <%= link_to question.title, question_path(question) %><br>
                 <%= question.created_at.strftime("%Y/%m/%d") %>
               </td>
               <td>
                 <% question.tag_list.each do |tag| %>
-                  <%= link_to tag, questions_path(tag_name: tag), class: 'button btn btn-success' %><br>
+                  <%= link_to tag, questions_path(tag_name: tag), class: 'button btn btn-success' %>
                 <% end %>
               </td>
             </tr>
