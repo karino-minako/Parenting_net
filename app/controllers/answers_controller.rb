@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
     @answer.user_id = current_user.id
     @answer.save
-    @answers = Answer.where(question_id: @question).order(created_at: :desc)
+    @answers = @question.answers
   end
 
   def edit

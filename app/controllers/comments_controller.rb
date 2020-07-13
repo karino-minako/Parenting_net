@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
     @comment.post_id = @post.id
     @comment.user_id = current_user.id
     @comment.save
-    @comments = Comment.where(post_id: @post).order(created_at: :desc)
+    @comments = @post.comments
   end
 
   def edit
