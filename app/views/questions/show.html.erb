@@ -42,6 +42,7 @@
       <div class="blank h3">回答一覧</div>
       <div class="blank">
         <%= link_to "回答をいいね順に並べる", question_path(likes_order: @question.id) %><br>
+        <br>
         <%= link_to "回答を新着順に順に並べる", question_path(@question.id) %>
       </div>
       <div class="answer_<%= @question.id %>">
