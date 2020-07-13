@@ -25,8 +25,8 @@
         </td>
         <td>
           <% if answer.user.id == current_user.id %>
-            <%= link_to "編集", edit_question_answers_path(answer), class: 'button btn btn-warning' %>
-            <%= link_to "削除", question_answers_path(answer), class: 'button btn btn-danger', method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to "編集", edit_question_answer_path(answer.question,answer), class: 'button btn btn-warning' %>
+            <%= link_to "削除", question_answer_path(answer.question,answer), class: 'button btn btn-danger', method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
           <% end %>
         </td>
       </tr>

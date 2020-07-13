@@ -12,11 +12,11 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:post_id])
+    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:post_id])
+    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       redirect_to post_path(@comment.post)
     else
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:post_id])
+    @comment = Comment.find(params[:id])
     @post = @comment.post
     if @comment.user != current_user
       redirect_to request.referer

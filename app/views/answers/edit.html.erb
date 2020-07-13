@@ -3,7 +3,7 @@
     <div class="col-md-9 col-sm-12">
       <h2>回答編集</h2>
       <%= render 'layouts/errors', obj: @answer %>
-      <%= form_with(model: @answer, url: question_answers_path, method: :patch, local: true) do |f| %>
+      <%= form_with(model: @answer, url: question_answer_path(@answer.question,@answer), method: :patch, local: true) do |f| %>
         <%= f.text_area :answer, class: "form-control" %>
         <div class="actions">
           <%= f.submit '変更する' %>

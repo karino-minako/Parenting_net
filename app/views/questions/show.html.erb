@@ -41,11 +41,8 @@
       <% end %>
       <div class="blank h3">回答一覧</div>
       <div class="blank">
-        <% if params[:likes_order].nil? %>
-          <%= link_to "回答をいいね順に並べる", question_path(likes_order: @question.id) %>
-        <% else %>
-          <%= link_to "回答を新着順に順に並べる", question_path(@question.id) %>
-        <% end %>
+        <%= link_to "回答をいいね順に並べる", question_path(likes_order: @question.id) %><br>
+        <%= link_to "回答を新着順に順に並べる", question_path(@question.id) %>
       </div>
       <div class="answer_<%= @question.id %>">
         <%= render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]) %>
