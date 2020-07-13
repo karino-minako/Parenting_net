@@ -2,12 +2,12 @@
   <% if comment.comment_liked_by?(current_user) %>
     <%= link_to destroy_comment_likes_path(comment.id), method: :delete, remote: true do %>
       <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-      <%= comment.comment_likes.count %>  いいね
+      <%= comment.comment_likes.count %>
     <% end %>
   <% else %>
     <%= link_to post_comments_comment_likes_path(comment.id), method: :post, remote: true do %>
       <i class="far fa-thumbs-up" aria-hidden="true"></i>
-      <%= comment.comment_likes.count %>  いいね
+      <%= comment.comment_likes.count %>
     <% end %>
   <% end %>
 </div>

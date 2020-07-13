@@ -12,25 +12,24 @@
   <% if post.post_liked_by?(current_user) %>
     <%= link_to post_post_likes_path(post), method: :delete, remote: true do %>
       <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-      <%= post.post_likes.count %>  いいね<br>
+      <%= post.post_likes.count %><br>
     <% end %>
   <% else %>
     <%= link_to post_post_likes_path(post), method: :post, remote: true do %>
       <i class="far fa-thumbs-up" aria-hidden="true"></i>
-      <%= post.post_likes.count %>  いいね<br>
+      <%= post.post_likes.count %><br>
     <% end %>
   <% end %>
-  <i class="far fa-comment" aria-hidden="true"></i> コメント数: <%= post.comments.count %>
+  <i class="far fa-comment" aria-hidden="true"></i> <%= post.comments.count %>
 </td>
 <td>
   <% post.tag_list.each do |tag| %>
-    <%= link_to tag, posts_path(tag_name: tag), class: 'tag btn btn-success' %><br>
+    <%= link_to tag, posts_path(tag_name: tag), class: 'button btn btn-success' %><br>
   <% end %>
 </td>
 <td>
   <% if post.user.id == current_user.id %>
-    <%= link_to "編集する", edit_post_path(post) %><br>
-    <br>
-    <%= link_to "削除する", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？" 	%>
+    <%= link_to "編集", edit_post_path(post), class: 'button btn btn-warning' %><br>
+    <%= link_to "削除", post_path(post), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'button btn btn-danger' %>
   <% end %>
 </td>

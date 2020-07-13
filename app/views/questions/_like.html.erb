@@ -2,12 +2,12 @@
   <% if answer.answer_liked_by?(current_user) %>
     <%= link_to destroy_answer_likes_path(answer.id), method: :delete, remote: true do %>
       <i class="fas fa-thumbs-up" aria-hidden="true"></i>
-      <%= answer.answer_likes.count %>  いいね
+      <%= answer.answer_likes.count %>
     <% end %>
   <% else %>
     <%= link_to question_answers_answer_likes_path(answer.id), method: :post, remote: true do %>
       <i class="far fa-thumbs-up" aria-hidden="true"></i>
-      <%= answer.answer_likes.count %>  いいね
+      <%= answer.answer_likes.count %>
     <% end %>
   <% end %>
 </div>

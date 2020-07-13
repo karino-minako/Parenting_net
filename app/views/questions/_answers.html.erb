@@ -17,7 +17,7 @@
           <%= link_to answer.user.name, user_path(answer.user) %>
         </td>
         <td>
-          <%= simple_format answer.answer %><br>
+          <%= simple_format answer.answer %>
           <%= answer.created_at.strftime("%Y/%m/%d") %>
         </td>
         <td class="answer_like_<%= answer.id %>">
@@ -25,9 +25,8 @@
         </td>
         <td>
           <% if answer.user.id == current_user.id %>
-            <%= link_to "編集する", edit_question_answers_path(answer) %><br>
-            <br>
-            <%= link_to "削除する", question_answers_path(answer), method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
+            <%= link_to "編集", edit_question_answers_path(answer), class: 'button btn btn-warning' %>
+            <%= link_to "削除", question_answers_path(answer), class: 'button btn btn-danger', method: :delete, remote: true, "data-confirm" => "本当に削除しますか？" %>
           <% end %>
         </td>
       </tr>

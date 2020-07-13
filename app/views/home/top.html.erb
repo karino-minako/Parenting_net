@@ -2,13 +2,17 @@
   <div class="row">
     <div class="col-md-9 col-sm-12">
       <p class="flash_message"><%= flash[:notice] %></p>
-      <h2>投稿ランキング（ <i class="fas fa-thumbs-up" aria-hidden="true"></i> いいね順）</h2>
-      <table class="table table-hover table-inverse">
+      <div class="top-heading h2">投稿ランキング</div>
+      <div class="top-heading h3">
+        （ <i class="fas fa-thumbs-up" aria-hidden="true"></i> いいね順）トップ３
+      </div>
+      <table class="top-table table table-hover table-inverse">
         <thead>
           <tr>
-            <th class="th-01"><i class="fas fa-thumbs-up" aria-hidden="true"></i> いいねの数</th>
+            <th class="th-01"><i class="fas fa-thumbs-up" aria-hidden="true"></i> </th>
             <th class="th-02">名前</th>
-            <th class="th-03">タイトル</th>
+            <th class="th-04">タイトル</th>
+            <th class="th-03">タグ</th>
           </tr>
         </thead>
         <tbody>
@@ -27,18 +31,27 @@
               	<%= link_to post.title, post_path(post) %><br>
               	<%= post.created_at.strftime("%Y/%m/%d") %>
               </td>
+              <td>
+                <% post.tag_list.each do |tag| %>
+                  <%= link_to tag, posts_path(tag_name: tag), class: 'button btn btn-success' %><br>
+                <% end %>
+              </td>
             </tr>
           <% end %>
         </tbody>
       </table>
 
-      <h2>質問ランキング（ <i class="fas fa-smile" aria-hidden="true"></i> 共感した順）</h2>
-      <table class="table table-hover table-inverse">
+      <div class="top-heading h2">質問ランキング</div>
+      <div class="top-heading h3">
+        （ <i class="fas fa-smile" aria-hidden="true"></i> 共感した順）トップ３
+      </div>
+      <table class="top-table table table-hover table-inverse">
         <thead>
           <tr>
-            <th class="th-01"><i class="fas fa-smile" aria-hidden="true"></i> 共感した数</th>
+            <th class="th-01"><i class="fas fa-smile" aria-hidden="true"></i> </th>
             <th class="th-02">名前</th>
-            <th class="th-03">タイトル</th>
+            <th class="th-04">タイトル</th>
+            <th class="th-03">タグ</th>
           </tr>
         </thead>
         <tbody>
@@ -57,6 +70,11 @@
               <td>
                 <%= link_to question.title, question_path(question) %><br>
                 <%= question.created_at.strftime("%Y/%m/%d") %>
+              </td>
+              <td>
+                <% question.tag_list.each do |tag| %>
+                  <%= link_to tag, questions_path(tag_name: tag), class: 'button btn btn-success' %><br>
+                <% end %>
               </td>
             </tr>
           <% end %>

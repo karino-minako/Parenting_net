@@ -11,26 +11,23 @@
 <td>
   <% if question.empathized_by?(current_user) %>
     <%= link_to question_empathies_path(question), method: :delete, remote: true do %>
-      <i class="fas fa-smile" aria-hidden="true"></i>
-      共感した  <%= question.empathies.count %><br>
+      <i class="fas fa-smile" aria-hidden="true"></i> <%= question.empathies.count %><br>
     <% end %>
   <% else %>
     <%= link_to question_empathies_path(question), method: :post, remote: true do %>
-      <i class="far fa-smile" aria-hidden="true"></i>
-      共感した  <%= question.empathies.count %><br>
+      <i class="far fa-smile" aria-hidden="true"></i> <%= question.empathies.count %><br>
     <% end %>
   <% end %>
-  <i class="far fa-comment" aria-hidden="true"></i> 回答数: <%= question.answers.count %>
+  <i class="far fa-comment" aria-hidden="true"></i> <%= question.answers.count %>
 </td>
 <td>
   <% question.tag_list.each do |tag| %>
-    <%= link_to tag, questions_path(tag_name: tag), class: 'tag btn btn-success' %><br>
+    <%= link_to tag, questions_path(tag_name: tag), class: 'button btn btn-success' %><br>
   <% end %>
 </td>
 <td>
   <% if question.user.id == current_user.id %>
-    <%= link_to "編集する", edit_question_path(question) %><br>
-    <br>
-    <%= link_to "削除する", question_path(question), method: :delete, "data-confirm" => "本当に削除しますか？" 	%>
+    <%= link_to "編集", edit_question_path(question), class: 'button btn btn-warning' %><br>
+    <%= link_to "削除", question_path(question), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'button btn btn-danger' %>
   <% end %>
 </td>

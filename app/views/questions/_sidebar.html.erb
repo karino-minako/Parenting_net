@@ -1,6 +1,6 @@
 <div class="sidebar-heading h2">質問のタグ一覧</div>
 <% tags.each do |tag| %>
-  <span class="tag"><%= link_to tag.name, questions_path(tag_name: tag.name), class: 'btn btn-success'%></span>
+  <span class="button"><%= link_to tag.name, questions_path(tag_name: tag.name), class: 'btn btn-success'%></span>
 <% end %>
 
 <div class="sidebar-heading h2">質問<br>

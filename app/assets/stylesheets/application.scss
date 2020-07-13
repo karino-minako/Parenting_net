@@ -29,7 +29,7 @@ main {
   color: #108080;
 }
 
-.tag {
+.button {
   display: inline-block;
   margin: 5px;
 }
@@ -50,6 +50,15 @@ header {
 .search-form {
   margin-top: 40px;
   text-align: center;
+}
+
+// top画面
+
+.top-heading {
+  text-align: center;
+}
+.top-table {
+  margin: 30px 0px 40px 0px;
 }
 
 // about画面
@@ -94,6 +103,7 @@ header {
 }
 
 // サイドバー
+
 .sidebar-heading {
   padding: 60px 0px 10px 0px;
 }
@@ -123,22 +133,19 @@ header {
   margin: 0 auto;
 }
 
-// トップページのランキング
+// トップページのランキング,投稿一覧,質問一覧,会員詳細のテーブル
 
 .th-01 {
-  width: 20%;
+  width: 10%;
 }
 .th-02 {
-  width: 30%;
+  width: 20%;
 }
 .th-03 {
-  width: 50%;
+  width: 30%;
 }
 .th-04 {
   width: 40%;
-}
-.th-05 {
-  width: 10%;
 }
 
 // アイコン
@@ -148,3 +155,4 @@ header {
 .fa-smile {
   color: orange;
 }
+
