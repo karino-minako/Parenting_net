@@ -156,3 +156,26 @@ header {
   color: orange;
 }
 
+// チャットページ
+
+.chats_area {
+  .message {
+    max-width: 50%;
+    padding: 7px;
+    border-radius: 10px;
+  }
+  .my_message {
+    margin: 0 0 0 auto; // 要素ごと右寄せ
+    text-align: right;
+    margin-bottom: 10px;
+    background: rgba(30, 255, 0, 0.7);
+  }
+  .other_message {
+    margin-bottom: 10px;
+    background: #CDE3F1;
+  }
+  .text_center {
+    text-align: center;
+  }
+}
+
