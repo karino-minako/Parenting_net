@@ -45,6 +45,21 @@
         </tbody>
       </table>
 
+      <% if @user.id != current_user.id %>
+        <% if @isRoom == true %>
+          <%= link_to room_path(@roomId) do %>
+            <i class="fas fa-paper-plane"> チャットへ</i>
+          <% end %>
+        <% else %>
+          <%= form_for(@room, url: rooms_path) do |f| %>
+            <%= fields_for @entry do |e| %>
+              <%= e.hidden_field :user_id, :value=> @user.id %>
+            <% end %>
+            <%= f.submit "チャットを始める", class: "chats_btn" %>
+          <% end %>
+        <% end %>
+      <% end %>
+
       <h3>投稿一覧</h3>
       <%= render 'posts/index', posts: @posts %>
 
