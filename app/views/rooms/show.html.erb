@@ -28,14 +28,14 @@
           <h4 class="text_center">メッセージはまだありません</h4>
         <% end %>
 
-<%= form_for @message do |f| %>
-  <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", class: "form-control" %>
-  <%= f.hidden_field :room_id, :value => @room.id %>
-  <div class="actions">
-    <%= f.submit "送信", class: 'btn btn-primary col-xs-12'%>
+        <%= form_for @message do |f| %>
+          <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", class: "form-control" %>
+          <%= f.hidden_field :room_id, :value => @room.id %>
+          <div class="actions">
+            <%= f.submit "送信", class: 'btn btn-primary col-xs-12'%>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-
-</div>
-</div>
 </div>
