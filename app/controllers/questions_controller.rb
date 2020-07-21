@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @image_url = "https://kadai-resize.s3-ap-northeast-1.amazonaws.com/store/" + @question.image_id + "-thumbnail."
     @answers = params[:likes_order].present? ? Answer.answer_like_ranks(@question.id) : @question.answers
     @answer = Answer.new
     @tags = Question.tag_counts_on(:tags).order('count DESC')

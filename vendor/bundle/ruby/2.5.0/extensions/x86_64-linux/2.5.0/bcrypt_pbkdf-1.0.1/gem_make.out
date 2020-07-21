@@ -1,0 +1,19 @@
+current directory: /home/vagrant/work/Parenting_net/vendor/bundle/ruby/2.5.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+/home/vagrant/.rbenv/versions/2.5.7/bin/ruby -r ./siteconf20200721-10774-12am4vf.rb extconf.rb
+creating Makefile
+
+current directory: /home/vagrant/work/Parenting_net/vendor/bundle/ruby/2.5.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" clean
+
+current directory: /home/vagrant/work/Parenting_net/vendor/bundle/ruby/2.5.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR="
+compiling bcrypt_pbkdf.c
+compiling bcrypt_pbkdf_ext.c
+compiling blowfish.c
+compiling explicit_bzero.c
+compiling hash_sha512.c
+linking shared-object bcrypt_pbkdf_ext.so
+
+current directory: /home/vagrant/work/Parenting_net/vendor/bundle/ruby/2.5.0/gems/bcrypt_pbkdf-1.0.1/ext/mri
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 bcrypt_pbkdf_ext.so ./.gem.20200721-10774-1t7af37

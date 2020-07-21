@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @image_url = "https://kadai-resize.s3-ap-northeast-1.amazonaws.com/store/" + @post.image_id + "-thumbnail."
     @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
     @comment = Comment.new
     @post_tags = Post.tag_counts_on(:tags).order('count DESC')
@@ -40,6 +41,7 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to post_path(@post)
     else
       render :edit

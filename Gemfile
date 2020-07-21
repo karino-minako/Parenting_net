@@ -73,6 +73,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem "refile-mini_magick"
+gem 'refile-s3'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'sassc-rails', '>= 2.1.0'
@@ -92,4 +93,3 @@ group :production do
 end
 
 gem 'acts-as-taggable-on', '~> 6.0'
-
