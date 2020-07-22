@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    @image_url = "https://kadai-1.s3-ap-northeast-1.amazonaws.com/store/" + @post.image_id
+    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id
     @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
     @comment = Comment.new
     @post_tags = Post.tag_counts_on(:tags).order('count DESC')
@@ -36,6 +36,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id
   end
 
   def update
