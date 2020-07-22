@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @user.profile_image_id
     @posts = @user.posts.page(params[:page]).reverse_order
     @questions = @user.questions.page(params[:page]).reverse_order
     @currentUserEntry = Entry.where(user_id: current_user.id)
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       flash[:notice] = "会員情報を更新しました！"
       redirect_to user_path(@user)
     else
