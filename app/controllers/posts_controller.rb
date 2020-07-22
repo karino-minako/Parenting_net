@@ -28,8 +28,10 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id
+    @post_user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.user.profile_image_id
     @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
     @comment = Comment.new
+    @comment_user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
     @post_tags = Post.tag_counts_on(:tags).order('count DESC')
     @post_like_ranks = Post.create_post_like_ranking
   end

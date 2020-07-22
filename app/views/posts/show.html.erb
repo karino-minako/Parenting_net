@@ -15,7 +15,7 @@
 
         <tbody>
           <tr class="post_<%= @post.id %>">
-            <%= render 'posts/show', post: @post %>
+            <%= render 'posts/show', post: @post, post_user_url: @post_user_url %>
           </tr>
         </tbody>
       </table>
@@ -45,7 +45,7 @@
         <%= link_to "コメントを新着順に順に並べる", post_path(@post.id) %>
       </div>
       <div class="comment_<%= @post.id %>">
-        <%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
+        <%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]), comment_user_url: @comment_user_url %>
       </div>
     </div>
 

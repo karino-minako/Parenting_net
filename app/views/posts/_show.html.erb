@@ -1,6 +1,6 @@
 <td>
   <%= link_to user_path(post.user_id) do %>
-    <%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+    <%= image_tag post_user_url :fill, 40, 40, fallback: "no-image1.jpg") %><br>
   <% end %>
   <%= link_to post.user.name, user_path(post.user_id) %>
 </td>
