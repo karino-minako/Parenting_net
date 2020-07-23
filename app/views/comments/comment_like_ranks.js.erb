@@ -1,3 +1,0 @@
-$("textarea").val("");
-$(".post_<%= @post.id %>").html("<%= j( render 'posts/show', post: @post ) %>");
-$(".comment_<%= @post.id %>").html("<%= j( render 'posts/comments', comments: @comments.page(params[:page]) ) %>");

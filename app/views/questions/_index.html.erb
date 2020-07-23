@@ -11,7 +11,7 @@
   <tbody>
     <% questions.each do |question| %>
       <tr class="questions_<%= question.id %>">
-        <%= render '/questions/question', question: question %>
+        <%= render '/questions/question', question: question, image_url: image_url %>
       </tr>
     <% end %>
   </tbody>

@@ -7,12 +7,12 @@
       <% else %>
         <h2>"<%= params[:tag_name] %>" タグのついた投稿一覧</h2>
       <% end %>
-      <%= render 'posts/index', posts: @posts %>
+      <%= render 'posts/index', posts: @posts, image_url: @image_url %>
       <%= paginate @posts %>
     </div>
 
     <div class="col-md-3 col-sm-12">
-      <%= render 'posts/sidebar', post_tags: @post_tags, post_like_ranks: @post_like_ranks %>
+      <%= render 'posts/sidebar', post_tags: @post_tags, post_like_ranks: @post_like_ranks, image_url: @image_url %>
     </div>
   </div>
 </div>

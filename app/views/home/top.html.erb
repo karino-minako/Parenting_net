@@ -23,7 +23,11 @@
               </td>
               <td>
                 <%= link_to user_path(post.user_id) do %>
-                  <%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+                  <% if post.user.profile_image_id.nil? %>
+                    <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
+                  <% else %>
+                    <%= image_tag @image_url + post.user.profile_image_id.to_s, style: "width: 40px; height: 40px;" %><br>
+                  <% end %>
                 <% end %>
                 <%= link_to post.user.name, user_path(post.user_id) %>
               </td>
@@ -63,7 +67,11 @@
               </td>
               <td>
                 <%= link_to user_path(question.user_id) do %>
-                  <%= attachment_image_tag(question.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+                  <% if question.user.profile_image_id.nil? %>
+                    <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
+                  <% else %>
+                    <%= image_tag @image_url + question.user.profile_image_id.to_s, style: "width: 40px; height: 40px;" %><br>
+                  <% end %>
                 <% end %>
                 <%= link_to question.user.name, user_path(question.user_id) %>
               </td>

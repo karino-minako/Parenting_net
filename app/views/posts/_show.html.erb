@@ -1,6 +1,10 @@
 <td>
   <%= link_to user_path(post.user_id) do %>
-    <%= image_tag post_user_url :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+    <% if post.user.profile_image_id.nil? %>
+      <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
+    <% else %>
+      <%= image_tag post_user_url, style: "width: 40px; height: 40px;" %><br>
+    <% end %>
   <% end %>
   <%= link_to post.user.name, user_path(post.user_id) %>
 </td>

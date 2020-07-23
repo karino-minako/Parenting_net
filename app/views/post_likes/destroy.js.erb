@@ -1,3 +1,3 @@
-$(".post_<%= @post.id %>").html("<%= j( render 'posts/show', post: @post ) %>")
+$(".post_<%= @post.id %>").html("<%= j( render 'posts/show', post: @post, post_user_url: @post_user_url ) %>")
 
-$(".posts_<%= @post.id %>").html("<%= j( render 'posts/post', post: @post ) %>")
+$(".posts_<%= @post.id %>").html("<%= j( render 'posts/post', post: @post, image_url: @image_url ) %>")

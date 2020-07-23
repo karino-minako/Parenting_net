@@ -3,11 +3,13 @@ class UsersController < ApplicationController
 
   def index
     @users = User.page(params[:page]).reverse_order
+    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   def show
     @user = User.find(params[:id])
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @user.profile_image_id
+    @user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @user.profile_image_id.to_s
+    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
     @posts = @user.posts.page(params[:page]).reverse_order
     @questions = @user.questions.page(params[:page]).reverse_order
     @currentUserEntry = Entry.where(user_id: current_user.id)
