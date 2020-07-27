@@ -15,7 +15,7 @@
             <% if comment.user.profile_image_id.nil? %>
               <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
             <% else %>
-              <%= image_tag image_url + comment.user.profile_image_id.to_s, style: "width: 40px; height: 40px;" %><br>
+              <%= image_tag image_url + comment.user.profile_image_id + "-thumbnail.", style: "width: 40px; height: 40px;" %><br>
             <% end %>
           <% end %>
           <%= link_to comment.user.name, user_path(comment.user) %>
