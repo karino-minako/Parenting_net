@@ -23,28 +23,24 @@ class QuestionsController < ApplicationController
     end
     @tags = Question.tag_counts_on(:tags).order('count DESC')
     @question_empathy_ranks = Question.create_question_empathy_ranking
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   def show
     @question = Question.find(params[:id])
-    @question_user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @question.user.profile_image_id.to_s
-    @question_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @question.image_id.to_s
     @answers = params[:likes_order].present? ? Answer.answer_like_ranks(@question.id) : @question.answers
     @answer = Answer.new
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
     @tags = Question.tag_counts_on(:tags).order('count DESC')
     @question_empathy_ranks = Question.create_question_empathy_ranking
   end
 
   def edit
     @question = Question.find(params[:id])
-    @question_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @question.image_id.to_s
   end
 
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to question_path(@question)
     else
       render :edit

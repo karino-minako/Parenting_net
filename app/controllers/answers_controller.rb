@@ -9,8 +9,6 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @answer.save
     @answers = @question.answers
-    @question_user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @question.user.profile_image_id
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   def edit
@@ -33,7 +31,6 @@ class AnswersController < ApplicationController
       redirect_to request.referer
     end
     @answer.destroy
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   private

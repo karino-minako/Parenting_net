@@ -1,5 +1,5 @@
 <div class="sidebar-heading h2">投稿のタグ一覧</div>
-<% post_tags.each do |tag| %>
+<% tags.each do |tag| %>
   <span class="button"><%= link_to tag.name, posts_path(tag_name: tag.name), class: 'btn btn-success'%></span>
 <% end %>
 
@@ -22,11 +22,7 @@
         </td>
         <td>
           <%= link_to user_path(post.user_id) do %>
-            <% if post.user.profile_image_id.nil? %>
-              <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
-            <% else %>
-              <%= image_tag image_url + post.user.profile_image_id.to_s, style: "width: 40px; height: 40px;" %><br>
-            <% end %>
+            <%= attachment_image_tag(post.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
           <% end %>
           <%= link_to post.user.name, user_path(post.user_id) %>
         </td>

@@ -9,8 +9,6 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment.save
     @comments = @post.comments
-    @post_user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.user.profile_image_id
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   def edit
@@ -33,7 +31,6 @@ class CommentsController < ApplicationController
       redirect_to request.referer
     end
     @comment.destroy
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   private

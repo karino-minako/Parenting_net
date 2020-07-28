@@ -20,11 +20,7 @@
           <tr>
             <td>
               <%= link_to user_path(@user) do %>
-                <% if @user.profile_image_id.nil? %>
-                  <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
-                <% else %>
-                  <%= image_tag @user_url, style: "width: 40px; height: 40px;" %><br>
-                <% end %>
+                <%= attachment_image_tag(@user, :profile_image, :fill, 50, 50, fallback: "no-image1.jpg") %><br>
               <% end %>
               <%= @user.name %>
             </td>
@@ -65,10 +61,10 @@
       <% end %>
 
       <h3>投稿一覧</h3>
-      <%= render 'posts/index', posts: @posts, image_url: @image_url %>
+      <%= render 'posts/index', posts: @posts %>
 
       <h3>質問一覧</h3>
-      <%= render 'questions/index', questions: @questions, image_url: @image_url %>
+      <%= render 'questions/index', questions: @questions %>
     </div>
   </div>
 </div>

@@ -13,7 +13,7 @@
           <%= f.label :質問されている写真 %>
           <% if @question.image != nil %>
             <div class="image">
-              <%= image_tag @question_url %>
+              <%= attachment_image_tag @question, :image %><br>
             </div>
           <% end %>
           <%= f.label :写真 %>

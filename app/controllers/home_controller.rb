@@ -4,7 +4,6 @@ class HomeController < ApplicationController
   def top
     @post_like_ranks = Post.create_post_like_ranks
     @question_empathies_ranks = Question.create_question_empathy_ranks
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   def about

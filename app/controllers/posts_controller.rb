@@ -21,25 +21,20 @@ class PostsController < ApplicationController
     else
       @posts = Post.page(params[:page]).reverse_order
     end
-    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @tags = Post.tag_counts_on(:tags).order('count DESC')
     @post_like_ranks = Post.create_post_like_ranking
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
   end
 
   def show
     @post = Post.find(params[:id])
-    @post_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id + "-thumbnail."
-    @post_user_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.user.profile_image_id.to_s
     @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
     @comment = Comment.new
-    @image_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/"
-    @post_tags = Post.tag_counts_on(:tags).order('count DESC')
+    @tags = Post.tag_counts_on(:tags).order('count DESC')
     @post_like_ranks = Post.create_post_like_ranking
   end
 
   def edit
     @post = Post.find(params[:id])
-    @post_url = "https://#{ENV['AWS_S3_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id.to_s
   end
 
   def update

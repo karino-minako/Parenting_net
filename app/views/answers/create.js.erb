@@ -1,4 +1,4 @@
 $("textarea").val("");
-$(".question_<%= @question.id %>").html("<%= j( render 'questions/show', question: @question, question_user_url: @question_user_url ) %>");
+$(".question_<%= @question.id %>").html("<%= j( render 'questions/show', question: @question ) %>");
 $(".answer_errors").html("<%= j( render 'layouts/errors', obj: @answer ) %>");
-$(".answer_<%= @question.id %>").html("<%= j( render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]), image_url: @image_url ) %>");
+$(".answer_<%= @question.id %>").html("<%= j( render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]) ) %>");

@@ -15,14 +15,14 @@
 
         <tbody>
           <tr class="question_<%= @question.id %>">
-            <%= render 'questions/show', question: @question, question_user_url: @question_user_url %>
+            <%= render 'questions/show', question: @question %>
           </tr>
         </tbody>
       </table>
 
       <div class="image">
         <% if @question.image != nil %>
-          <%= image_tag @question_url %>
+          <%= attachment_image_tag @question, :image %><br>
         <% end %>
       </div>
       <br>
@@ -46,12 +46,12 @@
         <%= link_to "回答を新着順に順に並べる", question_path(@question.id) %>
       </div>
       <div class="answer_<%= @question.id %>">
-        <%= render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]), image_url: @image_url %>
+         <%= render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]) %>
       </div>
     </div>
 
     <div class="col-md-3 col-sm-12">
-      <%= render 'questions/sidebar', tags: @tags, question_empathy_ranks: @question_empathy_ranks, image_url: @image_url %>
+      <%= render 'questions/sidebar', tags: @tags, question_empathy_ranks: @question_empathy_ranks %>
     </div>
   </div>
 </div>
