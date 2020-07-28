@@ -46,7 +46,7 @@
         <%= link_to "回答を新着順に順に並べる", question_path(@question.id) %>
       </div>
       <div class="answer_<%= @question.id %>">
-         <%= render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]) %>
+        <%= render 'questions/answers', answers: @answers.order(created_at: :desc).page(params[:page]) %>
       </div>
     </div>
 
