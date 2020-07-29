@@ -62,9 +62,11 @@
 
       <h3>投稿一覧</h3>
       <%= render 'posts/index', posts: @posts %>
+      <%= paginate @posts %>
 
       <h3>質問一覧</h3>
       <%= render 'questions/index', questions: @questions %>
+      <%= paginate @questions %>
     </div>
   </div>
 </div>

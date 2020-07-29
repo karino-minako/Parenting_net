@@ -391,6 +391,7 @@ DEPENDENCIES
   refile!
   refile-mini_magick
   refile-s3
+  rspec-core
   rspec-rails
   sass-rails (~> 5.0)
   sassc-rails (>= 2.1.0)
