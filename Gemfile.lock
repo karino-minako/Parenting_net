@@ -63,19 +63,19 @@ GEM
     autoprefixer-rails (9.8.5)
       execjs
     aws-eventstream (1.1.0)
-    aws-sdk (2.11.548)
-      aws-sdk-resources (= 2.11.548)
-    aws-sdk-core (2.11.548)
+    aws-sdk (2.11.554)
+      aws-sdk-resources (= 2.11.554)
+    aws-sdk-core (2.11.554)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
-    aws-sdk-resources (2.11.548)
-      aws-sdk-core (= 2.11.548)
+    aws-sdk-resources (2.11.554)
+      aws-sdk-core (= 2.11.554)
     aws-sigv4 (1.2.1)
       aws-eventstream (~> 1, >= 1.0.2)
-    bcrypt (3.1.13)
+    bcrypt (3.1.15)
     bcrypt_pbkdf (1.0.1)
     bindex (0.8.1)
-    bootsnap (1.4.6)
+    bootsnap (1.4.7)
       msgpack (~> 1.0)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
@@ -152,7 +152,7 @@ GEM
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
-    i18n (1.8.4)
+    i18n (1.8.5)
       concurrent-ruby (~> 1.0)
     io-like (0.3.1)
     jbuilder (2.10.0)
@@ -391,7 +391,6 @@ DEPENDENCIES
   refile!
   refile-mini_magick
   refile-s3
-  rspec-core
   rspec-rails
   sass-rails (~> 5.0)
   sassc-rails (>= 2.1.0)
