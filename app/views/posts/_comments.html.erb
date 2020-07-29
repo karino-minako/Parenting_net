@@ -12,7 +12,11 @@
       <tr>
         <td>
           <%= link_to user_path(comment.user) do %>
-            <%= attachment_image_tag(comment.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+            <% if comment.user.profile_image_id.nil? %>
+              <%= image_tag('no-image1.jpg', style: "width: 40px; height: 40px;") %><br>
+            <% else %>
+              <%= image_tag image_url + comment.user.profile_image_id + "-thumbnail.", style: "width: 40px; height: 40px;" %><br>
+            <% end %>
           <% end %>
           <%= link_to comment.user.name, user_path(comment.user) %>
         </td>

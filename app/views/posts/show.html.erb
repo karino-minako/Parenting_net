@@ -22,7 +22,7 @@
 
       <% if @post.image != nil %>
         <div class="image">
-          <%= attachment_image_tag @post, :image %>
+          <%= image_tag @post_url %>
         </div>
       <% end %>
       <div class="content-heading h5">内容</div>
@@ -45,7 +45,7 @@
         <%= link_to "コメントを新着順に順に並べる", post_path(@post.id) %>
       </div>
       <div class="comment_<%= @post.id %>">
-        <%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]) %>
+        <%= render 'posts/comments', comments: @comments.order(created_at: :desc).page(params[:page]), image_url: @image_url %>
       </div>
     </div>
 
