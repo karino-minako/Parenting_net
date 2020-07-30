@@ -22,4 +22,9 @@ class Post < ApplicationRecord
 
   #タグ付けに必要
   acts_as_taggable
+
+  def post_url
+    "https://#{ENV['AWS_S3_UPLOAD_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + image_id + "-thumbnail."
+  end
+
 end
