@@ -21,8 +21,8 @@
       </table>
 
       <div class="image">
-        <% if @question.image_id != nil %>
-          <%= image_tag @image_url %>
+        <% if @question.image != nil %>
+          <%= attachment_image_tag @question, :image %><br>
         <% end %>
       </div>
       <br>
