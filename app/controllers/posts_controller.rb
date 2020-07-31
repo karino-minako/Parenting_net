@@ -27,6 +27,7 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    @image_url = "https://#{ENV['AWS_S3_UPLOAD_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id + "-thumbnail."
     @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
     @comment = Comment.new
     @tags = Post.tag_counts_on(:tags).order('count DESC')
