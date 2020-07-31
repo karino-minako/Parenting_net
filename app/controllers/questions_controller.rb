@@ -9,6 +9,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     if @question.save
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to question_path(@question)
     else
       render action: :new

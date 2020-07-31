@@ -9,6 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
+      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to post_path(@post)
     else
       render :new
