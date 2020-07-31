@@ -27,6 +27,7 @@ class QuestionsController < ApplicationController
 
   def show
     @question = Question.find(params[:id])
+    @image_url = "https://#{ENV['AWS_S3_UPLOAD_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @question.image_id + "-thumbnail."
     @answers = params[:likes_order].present? ? Answer.answer_like_ranks(@question.id) : @question.answers
     @answer = Answer.new
     @tags = Question.tag_counts_on(:tags).order('count DESC')

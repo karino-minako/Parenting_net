@@ -22,4 +22,5 @@ class Post < ApplicationRecord
 
   #タグ付けに必要
   acts_as_taggable
+
 end
