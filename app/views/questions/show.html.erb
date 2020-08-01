@@ -20,12 +20,11 @@
         </tbody>
       </table>
 
-      <div class="image">
-        <% if @question.image != nil %>
-          <%= attachment_image_tag @question, :image %><br>
-        <% end %>
-      </div>
-      <br>
+      <% if @question.image_id != nil %>
+        <div class="image">
+          <%= image_tag @image_url %>
+        </div>
+      <% end %>
       <div class="content-heading h5">内容</div>
       <div class="blank"><%= simple_format @question.body %></div>
       <div class="border"></div>
