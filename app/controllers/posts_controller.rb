@@ -9,7 +9,6 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to post_path(@post)
     else
       render :new
@@ -28,9 +27,6 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
-    if @post.image_id != nil
-      @image_url = "https://#{ENV['AWS_S3_UPLOAD_BUCKET_NAME']}.s3-#{ENV['AWS_REGION']}.amazonaws.com/store/" + @post.image_id + "-thumbnail."
-    end
     @comments = params[:likes_order].present? ? Comment.comment_like_ranks(@post.id) : @post.comments
     @comment = Comment.new
     @tags = Post.tag_counts_on(:tags).order('count DESC')
@@ -44,7 +40,6 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
-      sleep(3) # S3への画像反映のタイムラグを考慮して3秒待機
       redirect_to post_path(@post)
     else
       render :edit
