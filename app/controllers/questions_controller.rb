@@ -50,7 +50,7 @@ class QuestionsController < ApplicationController
   def destroy
     question = Question.find(params[:id])
     question.destroy
-    flash[:notice] = "質問を削除しました！"
+    flash[:notice] = "< 質問を削除しました！ >"
     redirect_to questions_path
   end
 

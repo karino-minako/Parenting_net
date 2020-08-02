@@ -8,6 +8,7 @@ class AnswersController < ApplicationController
     @answer.question_id = @question.id
     @answer.user_id = current_user.id
     @answer.save
+    flash[:answer] = "< 回答しました！ >"
     @answers = @question.answers
   end
 
@@ -18,6 +19,7 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     if @answer.update(answer_params)
+      flash[:answer] = "< コメントを編集しました！ >"
       redirect_to question_path(@answer.question)
     else
       render 'edit'
@@ -31,6 +33,7 @@ class AnswersController < ApplicationController
       redirect_to request.referer
     end
     @answer.destroy
+    flash[:answer] = "< 回答を削除しました！ >"
   end
 
   private
