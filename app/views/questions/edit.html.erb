@@ -10,6 +10,12 @@
         </div>
 
         <div class="field">
+          <%= f.label :質問されている写真 %>
+          <% if @question.image != nil %>
+            <div class="image">
+              <%= attachment_image_tag @question, :image %><br>
+            </div>
+          <% end %>
           <%= f.label :写真 %>
           <%= f.attachment_field :image %>
         </div>
