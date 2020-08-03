@@ -20,6 +20,11 @@ Rails.application.routes.draw do
   get 'posts/:id/comments' => 'posts#show'
   post 'comments/:id/comment_likes' => 'comment_likes#create',as: 'post_comments_comment_likes'
   delete 'comments/:id/comment_likes' => 'comment_likes#destroy',as: 'destroy_comment_likes'
+  resources :notifications, only: :index do
+    collection do
+      delete '/', to: 'notifications#destroy_all'
+    end
+  end
 
   resources :questions do
     resource :empathies, only: [:create, :destroy]

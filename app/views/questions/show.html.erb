@@ -22,7 +22,7 @@
 
       <% if @question.image_id != nil %>
         <div class="image">
-          <%= attachment_image_tag @question, :image %>
+          <%= image_tag @image_url %>
         </div>
       <% end %>
       <div class="content-heading h5">内容</div>
