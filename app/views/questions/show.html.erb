@@ -22,7 +22,28 @@
 
       <% if @question.image_id != nil %>
         <div class="image">
-          <%= attachment_image_tag @question, :image %>
+          <div>
+            <%= image_tag 'loading.gif', id: 'upload-image' %>
+
+            <script type="text/javascript">
+              show_image_timer();
+              function show_image_timer() {
+                var img = new Image();
+                img.src = "<%= @image_url %>";
+
+                img.onload = function() {
+                  // @image_url の実体が存在する場合、 image_tag の src プロパティを書き換える。
+                  // = ブラウザ上に @image_url の画像が読み込まれ、表示が切り替わる。
+                  document.getElementById("upload-image").src = "<%= @image_url %>";
+                };
+
+                img.onerror = function() {
+                  // @image_url の実態が存在しない場合は、再帰的に本処理を繰り返し実行する。
+                  setTimeout("show_image_timer()", 3000); // 実行間隔 = ミリ秒
+                };
+              }
+            </script>
+          </div>
         </div>
       <% end %>
       <div class="content-heading h5">内容</div>
