@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @answer_question = @answer.question
     if @answer.save
-      flash[:notice] = "< 回答しました！ >"
+      flash[:answer] = "< 回答しました！ >"
       #通知の作成
       @answer_question.create_notification_answer!(current_user, @answer.id)
     end
