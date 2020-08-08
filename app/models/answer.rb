@@ -3,6 +3,7 @@ class Answer < ApplicationRecord
   belongs_to :question
   validates :answer, presence: true, length: {maximum: 200}
   has_many :answer_likes, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   def answer_liked_by?(user)
     answer_likes.where(user_id: user.id).exists?

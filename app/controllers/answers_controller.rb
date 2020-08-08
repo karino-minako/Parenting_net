@@ -7,8 +7,12 @@ class AnswersController < ApplicationController
     @answer = Answer.new(answer_params)
     @answer.question_id = @question.id
     @answer.user_id = current_user.id
-    @answer.save
-    flash[:answer] = "< 回答しました！ >"
+    @answer_question = @answer.question
+    if @answer.save
+      flash[:answer] = "< 回答しました！ >"
+      #通知の作成
+      @answer_question.create_notification_answer!(current_user, @answer.id)
+    end
     @answers = @question.answers
   end
 
