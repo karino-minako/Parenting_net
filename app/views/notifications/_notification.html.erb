@@ -1,0 +1,29 @@
+<% visiter = notification.visiter %>
+<% post = notification.post %>
+<% question = notification.question %>
+
+<table class="table table-hover table-inverse">
+  <tbody>
+    <tr>
+      <td>
+        <%= link_to user_path(notification.visiter) do %>
+          <%= attachment_image_tag visiter, :profile_image, :fill,40,40, format: "jpeg", fallback: "no-image1.jpg", size: "50x50", class:"profile-img-circle" %>
+        <% end %>
+        <%= notification_form(notification) %><span><%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+        <br>
+        <% if !@comment.nil? %>
+          <p class="text"><%= @comment&.comment %></p>
+        <% end %>
+        <% if !@answer.nil? %>
+          <p class="text"><%= @answer&.answer %></p>
+        <% end %>
+        <% if !@follow.nil? %>
+          <p class="text"><%= @follow %></p>
+        <% end %>
+        <% if !@message.nil? %>
+          <p class="text"><%= @message %></p>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
