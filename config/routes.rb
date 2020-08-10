@@ -1,15 +1,19 @@
 Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
   }
+
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#new_guest'
+  end
 
   get '/search', to: 'search#search'
   get 'answers/edit'
   get 'comments/edit'
 
   root 'home#top'
-  post '/homes/guest_sign_in', to: 'homes#new_guest'
+  post '/home/guest_sign_in', to: 'home#new_guest'
 
   get 'home/about'
 
