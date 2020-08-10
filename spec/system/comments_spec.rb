@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'コメントのテスト',js: true do
   let(:user) { create(:user) }
   let(:user2) { create(:user) }
-  let(:post) { create(:post, user: user) }
+  let!(:post) { create(:post, user: user) }
   let!(:comment) { create(:comment, user: user, post: post) }
   let!(:comment2) { create(:comment, user: user2, post: post) }
   before do
@@ -29,15 +29,13 @@ describe 'コメントのテスト',js: true do
       it 'コメントに成功する' do
         fill_in 'comment[comment]', with: Faker::Lorem.characters(number:5)
         click_button '送信'
-        wait_for_ajax do
-          expect(page).to have_content 'コメントしました！'
-          expect(current_path).to eq '/posts/' + post.id.to_s
-        end
+        expect(page).to have_content 'コメントしました！'
+        expect(current_path).to eq '/posts/' + post.id.to_s + '/comments'
       end
       it 'コメントに失敗する' do
         click_button '送信'
         expect(page).to have_content 'error'
-        expect(current_path).to eq '/posts/' + post.id.to_s
+        expect(current_path).to eq '/posts/' + post.id.to_s + '/comments'
       end
       it 'コメント一覧と表示される' do
         expect(page).to have_content 'コメント一覧'
