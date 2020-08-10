@@ -61,6 +61,7 @@ end
 group :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '>= 2.15'
+  gem 'capybara-webkit'
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
@@ -94,3 +95,5 @@ gem 'kaminari','~> 1.2.1'
 gem 'dotenv-rails'
 
 gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'rails-i18n', '~> 5.1'

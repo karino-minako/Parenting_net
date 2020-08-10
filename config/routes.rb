@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'comments/edit'
 
   root 'home#top'
+  post '/homes/guest_sign_in', to: 'homes#new_guest'
 
   get 'home/about'
 

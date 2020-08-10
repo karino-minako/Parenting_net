@@ -42,13 +42,18 @@ header {
 .header_logo {
   font-family:  'Caveat', cursive;
   line-height: 70px;
-  font-size: 35px;
+  font-size: 25px;
 }
 .navbar_right_icon {
   margin-top: 10px;
 }
-.search-form {
-  margin-top: 40px;
+.box{
+  display: inline-block;
+  font-size: 16px;
+  margin: 10px 10px 0px 10px;
+}
+.boxContainer{
+  font-size: 0;
   text-align: center;
 }
 

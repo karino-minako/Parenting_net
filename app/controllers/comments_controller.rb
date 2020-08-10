@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
       @comment_post.create_notification_comment!(current_user, @comment.id)
     end
     @comments = @post.comments
+    render 'create.js.erb'
   end
 
   def edit
