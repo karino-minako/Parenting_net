@@ -48,26 +48,27 @@
         </div>
       </div>
     </header>
-    <% if user_signed_in? %>
       <div class="boxContainer">
-        <div class="box">
-          <%= form_tag(search_path, method: :get) do %>
-            <%= text_field_tag 'search[content]' %>
-            <%= select_tag 'search[model]', options_for_select({ "会員" => "user", "投稿" => "post", "質問" => "question"}) %>
-            <%= submit_tag '検索' %>
-          <% end %>
-        </div>
-        <div class="box">
-          <% if unchecked_notifications.any? %>
-            <i class="fa fa-circle" style="color: gold;"></i>
-          <% end %>
-          <%= link_to "通知", notifications_path, class: "btn-default" %>
-        </div>
-        <div class="box">
-          <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post %>
-        </div>
+        <% if user_signed_in? %>
+          <div class="box">
+            <%= form_tag(search_path, method: :get) do %>
+              <%= text_field_tag 'search[content]' %>
+              <%= select_tag 'search[model]', options_for_select({ "会員" => "user", "投稿" => "post", "質問" => "question"}) %>
+              <%= submit_tag '検索' %>
+            <% end %>
+          </div>
+          <div class="box">
+            <% if unchecked_notifications.any? %>
+              <i class="fa fa-circle" style="color: gold;"></i>
+            <% end %>
+            <%= link_to "通知", notifications_path, class: "btn-default" %>
+          </div>
+        <% else %>
+          <div class="box">
+            <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post %>
+          </div>
+        <% end %>
       </div>
-    <% end %>
 
     <main>
       <%= yield %>
