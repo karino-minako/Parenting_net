@@ -1,0 +1,47 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-9 col-sm-12">
+      <h2>チャット相手の一覧</h2>
+      <table class="table table-hover table-inverse">
+      	<thead>
+          <tr>
+            <th>名前</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @anotherEntries.each do |e| %>
+            <tr>
+              <td>
+                <%= link_to user_path(e.user) do %>
+                  <%= attachment_image_tag(e.user, :profile_image, :fill, 40, 40, fallback: "no-image1.jpg") %><br>
+                <% end %>
+                <%= link_to e.user.name, user_path(e.user) %>
+              </td>
+              <td>
+                <%= link_to room_path(e.room.id) do %>
+                	<i class="fas fa-paper-plane"> チャットへ</i>
+                <% end %>
+              </td>
+              <td>
+                <!-- フォローボタン -->
+                <% if current_user.id != e.user.id %>
+                  <% if current_user.following?(e.user) %>
+                    <%= link_to 'フォロー外す', user_relationships_path(e.user.id), method: :delete, class: "btn btn-primary" %>
+                  <% else %>
+                    <%= link_to 'フォローする', user_relationships_path(e.user.id), method: :POST, class: "btn btn-success" %>
+                  <% end %>
+                <% end %>
+              </td>
+              <td>
+                フォロー数：<%= e.user.follower.count %>
+                <br>
+                フォロワー数：<%= e.user.followed.count %>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

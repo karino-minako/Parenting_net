@@ -60,6 +60,8 @@
             <%= f.submit "チャットを始める", class: "chats_btn" %>
           <% end %>
         <% end %>
+      <% else %>
+        <%= link_to 'チャット相手の一覧画面へ', rooms_path %>
       <% end %>
 
       <h3>投稿一覧</h3>

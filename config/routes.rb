@@ -42,7 +42,7 @@ Rails.application.routes.draw do
   end
 
   resources :messages, :only => [:create]
-  resources :rooms, :only => [:create, :show]
+  resources :rooms, :only => [:create, :show, :index]
 
   resources :notifications, only: :index do
     collection do
