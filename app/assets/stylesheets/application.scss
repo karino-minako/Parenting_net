@@ -28,10 +28,14 @@ main {
 .flash_message {
   color: #FF66FF;
 }
-
 .button {
   display: inline-block;
   margin: 5px;
+}
+.table {
+  width: 100%;
+  table-layout: fixed;
+  word-wrap: break-word;
 }
 
 // ヘッダー
@@ -122,6 +126,7 @@ header {
 }
 .blank {
   margin-bottom: 20px;
+  word-wrap: break-word;
 }
 .comment-answer {
   margin-top: 60px;
