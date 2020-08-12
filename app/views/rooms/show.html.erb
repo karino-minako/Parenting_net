@@ -27,7 +27,7 @@
         <% else %>
           <h4 class="text_center">メッセージはまだありません</h4>
         <% end %>
-
+        <%= paginate @messages %>
         <%= form_for @message do |f| %>
           <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", class: "form-control" %>
           <%= f.hidden_field :room_id, :value => @room.id %>
