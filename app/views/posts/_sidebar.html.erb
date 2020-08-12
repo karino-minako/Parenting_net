@@ -1,9 +1,9 @@
-<div class="sidebar-heading h2">投稿のタグ一覧</div>
+<div class="sidebar-heading h3">投稿のタグ一覧</div>
 <% tags.each do |tag| %>
   <span class="button"><%= link_to tag.name, posts_path(tag_name: tag.name), class: 'btn btn-success'%></span>
 <% end %>
 
-<div class="sidebar-heading h2">投稿<br>
+<div class="sidebar-heading h3">投稿<br>
   （ <i class="fas fa-thumbs-up" aria-hidden="true"></i> いいね順）</div>
 <table class="table table-hover table-inverse">
   <thead>

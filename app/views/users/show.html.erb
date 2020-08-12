@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 col-sm-12">
-      <h2>会員詳細</h2>
+      <h3>会員詳細</h3>
       <p class="flash_message"><%= flash[:user] %></p>
         <% if current_user.id == @user.id %>
           <% if @user.email != "guest@example.com" %>
@@ -72,5 +72,10 @@
       <%= render 'questions/index', questions: @questions %>
       <%= paginate @questions %>
     </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
   </div>
 </div>

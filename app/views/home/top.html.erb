@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9 col-sm-12">
       <p class="flash_message"><%= flash[:notice] %></p>
-      <div class="top-heading h2">投稿ランキング</div>
+      <div class="top-heading h3">投稿ランキング</div>
       <div class="top-heading h3">
         （ <i class="fas fa-thumbs-up" aria-hidden="true"></i> いいね順）トップ３
       </div>
@@ -41,7 +41,7 @@
         </tbody>
       </table>
 
-      <div class="top-heading h2">質問ランキング</div>
+      <div class="top-heading h3">質問ランキング</div>
       <div class="top-heading h3">
         （ <i class="fas fa-smile" aria-hidden="true"></i> 共感した順）トップ３
       </div>
@@ -80,6 +80,9 @@
           <% end %>
         </tbody>
       </table>
+    </div>
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
     </div>
   </div>
 </div>

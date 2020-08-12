@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 col-sm-12">
-      <h1>会員情報編集</h1>
+      <h3>会員情報編集</h3>
       <% if @user.email == "guest@example.com" %>
         <p>ゲストユーザーは編集できません</p>
         <%= link_to :back do %>
@@ -37,5 +37,10 @@
         <%= link_to "パスワードを変更する", edit_user_registration_path(@user) %>
       <% end %>
     </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
   </div>
 </div>

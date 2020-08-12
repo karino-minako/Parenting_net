@@ -3,7 +3,7 @@
     <div class="col-md-9 col-sm-12">
       <h4 class="flash_message"><%= flash[:question] %></h4>
       <% if params[:tag_name].nil? %>
-        <h2>質問一覧</h2>
+        <h3>質問一覧</h3>
       <% else %>
         <h2>"<%= params[:tag_name] %>" タグのついた質問一覧</h2>
       <% end %>
@@ -11,8 +11,13 @@
       <%= paginate @questions %>
     </div>
 
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
     <div class="col-md-3 col-sm-12">
       <%= render 'questions/sidebar', tags: @tags, question_empathy_ranks: @question_empathy_ranks %>
     </div>
+
   </div>
 </div>

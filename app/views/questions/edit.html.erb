@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9 col-sm-12">
       <%= render 'layouts/errors', obj: @question %>
-      <h2>質問編集</h2>
+      <h3>質問編集</h3>
       <%= form_with model: @question, local: true do |f| %>
         <div class="field">
           <%= f.label :タイトル %>
@@ -29,5 +29,10 @@
         </div>
       <% end %>
     </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
   </div>
 </div>

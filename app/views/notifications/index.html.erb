@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 col-sm-12">
-      <h2>通知</h2>
+      <h3>通知</h3>
       <%= link_to notifications_path, method: :delete, "data-confirm" => "本当に削除しますか？" do %>
         <i class="fas fa-trash" style="color: black;"></i>
         <h7>全削除</h7>
@@ -13,6 +13,11 @@
         <p>通知はありません</p>
       <% end %>
     </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
   </div>
 </div>
 
