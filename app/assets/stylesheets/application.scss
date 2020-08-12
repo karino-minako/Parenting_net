@@ -25,6 +25,14 @@ main {
 
 // 共通
 
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; // フッターを最下位で固定するための設定
+  .wrapper {
+    position: relative;
+    min-height: 100%; // 最低の高さ設定
+
 .flash_message {
   color: #FF66FF;
 }
@@ -51,6 +59,96 @@ header {
 .navbar_right_icon {
   margin-top: 10px;
 }
+
+// footer
+
+footer {
+      color: #4C4C4C;
+      width: 100%;
+      height: 100px;
+      background: rgba(225, 225, 225, 0.9);
+      position: absolute;
+      bottom: 0;
+      #about_contact {
+        margin: 0 auto;
+        width: 70%;
+        .footer_section_title {
+          text-align: center;
+          padding-top: 7px;
+          margin: 0;
+          font-size: 23px;
+        }
+        .contact_area {
+          font-size: 17px;
+          display: flex;
+          .contact_left {
+            margin: 0 auto;
+            width: 50%;
+          }
+          .contact_right {
+            margin: 0 auto;
+            display: flex;
+            .fab {
+              color: #fff;
+              width: 50px;
+              height: 50px;
+              line-height: 50px;
+              font-size: 25px;
+              border-radius: 13px;
+              text-align: center;
+              position: relative;
+              z-index: 2;
+              margin-right: 30px;
+              transition: .3s;
+            }
+            .insta {
+              margin-right: 30px;
+              transition: .3s;
+              position: relative;
+              display: inline-block;
+              overflow: hidden;
+              width: 50px;
+              height: 50px;
+              border-radius: 13px;
+              background: -webkit-linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+              background: linear-gradient(135deg, #427eff 0%, #f13f79 70%) no-repeat;
+            }
+            .insta:hover {
+              -webkit-transform: translateY(-5px);
+              transform: translateY(-5px);
+            }
+            .insta:before {
+              content: '';
+              position: absolute;
+              top: 23px;
+              left: -18px;
+              width: 60px;
+              height: 60px;
+              background: -webkit-radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+              background: radial-gradient(#ffdb2c 10%, rgba(255, 105, 34, 0.65) 55%, rgba(255, 88, 96, 0) 70%);
+            }
+            .fa-twitter {
+              background: #22b8ff;;
+            }
+            .fa-twitter:hover {
+              -webkit-transform: translateY(-5px);
+              transform: translateY(-5px);
+            }
+            .fa-facebook-f {
+              background: #6680d8;
+            }
+            .fa-facebook-f:hover {
+              -webkit-transform: translateY(-5px);
+              transform: translateY(-5px);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
 
 // top画面
 
