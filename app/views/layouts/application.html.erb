@@ -13,8 +13,8 @@
   <body>
     <header>
       <div class="navbar-wrapper">
-          <nav class="navbar navbar-inverse navbar-static-top offset-3 pull right">
-            <div class="container-fluid">
+        <nav class="navbar navbar-inverse navbar-static-top offset-3 pull right">
+          <div class="container-fluid">
             <div class="container">
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -37,7 +37,7 @@
                     <li><%= link_to "アバウト", home_about_path, class: "navbar_right_icon" %></li>
                     <li><%= link_to "ログアウト", destroy_user_session_path, class: "navbar_right_icon", method: :delete %></li>
                   <% else %>
-                    <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "navbar_right_icon", method: :post %><li>
+                    <li><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: "navbar_right_icon", method: :post %></li>
                     <li><%= link_to "アバウト", home_about_path, class: "navbar_right_icon" %></li>
                     <li><%= link_to "新規登録", new_user_registration_path, class: "navbar_right_icon" %></li>
                     <li><%= link_to "ログイン", new_user_session_path, class: "navbar_right_icon" %></li>
@@ -45,13 +45,23 @@
                 </ul>
               </div>
             </div>
-          </nav>
-        </div>
+          </div>
+        </nav>
       </div>
     </header>
 
     <main>
       <%= yield %>
     </main>
+
+    <footer>
+      <div class='container'>
+        <div class='row'>
+          <div class='col-xs-3 col-xs-offset-9'>
+            <p>CopyRight Parenting-net.inc</p>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
