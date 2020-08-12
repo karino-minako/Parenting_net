@@ -114,7 +114,17 @@ header {
 // サイドバー
 
 .sidebar-heading {
-  padding: 60px 0px 10px 0px;
+  padding: 20px 0px 10px 0px;
+  text-align: center;
+}
+.search {
+  text-align: center;
+}
+.search-actions {
+  padding: 20px 0px 40px 0px;
+}
+.search-text {
+  font-size: 24px;
 }
 
 //投稿・質問詳細画面

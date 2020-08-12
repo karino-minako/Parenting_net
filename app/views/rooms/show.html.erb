@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 col-sm-12">
-      <h2>チャット</h2>
+      <h3>チャット</h3>
       <div class="chats_area">
         <h4>参加者</h4>
         <% @entries.each do |entry| %>
@@ -37,5 +37,10 @@
         <% end %>
       </div>
     </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
   </div>
 </div>

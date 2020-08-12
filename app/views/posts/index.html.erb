@@ -3,12 +3,16 @@
     <div class="col-md-9 col-sm-12">
       <h4 class="flash_message"><%= flash[:post] %></h4>
       <% if params[:tag_name].nil? %>
-        <h2>投稿一覧</h2>
+        <h3>投稿一覧</h3>
       <% else %>
         <h2>"<%= params[:tag_name] %>" タグのついた投稿一覧</h2>
       <% end %>
       <%= render 'posts/index', posts: @posts %>
       <%= paginate @posts %>
+    </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
     </div>
 
     <div class="col-md-3 col-sm-12">

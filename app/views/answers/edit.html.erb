@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 col-sm-12">
-      <h2>回答編集</h2>
+      <h3>回答編集</h3>
       <%= render 'layouts/errors', obj: @answer %>
       <%= form_with(model: @answer, url: question_answer_path(@answer.question,@answer), method: :patch, local: true) do |f| %>
         <%= f.text_area :answer, class: "form-control" %>
@@ -10,5 +10,10 @@
         </div>
       <% end %>
     </div>
+
+    <div class="col-md-3 col-sm-12 search">
+      <%= render 'posts/search' %>
+    </div>
+
   </div>
 </div>
