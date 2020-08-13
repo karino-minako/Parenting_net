@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-9 col-sm-12">
+    <% if user_signed_in? %>
+      <div class="col-md-9 col-sm-12">
+    <% else %>
+      <div class="col-md-12 col-sm-12">
+    <% end %>
       <p class="flash_message"><%= flash[:notice] %></p>
       <div class="top-heading h3">投稿ランキング</div>
       <div class="top-heading h3">
@@ -33,7 +37,8 @@
               </td>
               <td>
                 <% post.tag_list.each do |tag| %>
-                  <%= link_to tag, posts_path(tag_name: tag), class: 'button btn btn-success' %>
+                  ・<%= link_to tag, posts_path(tag_name: tag) %><br>
+                  <br>
                 <% end %>
               </td>
             </tr>
@@ -73,7 +78,8 @@
               </td>
               <td>
                 <% question.tag_list.each do |tag| %>
-                  <%= link_to tag, questions_path(tag_name: tag), class: 'button btn btn-success' %>
+                  ・<%= link_to tag, questions_path(tag_name: tag) %><br>
+                  <br>
                 <% end %>
               </td>
             </tr>
