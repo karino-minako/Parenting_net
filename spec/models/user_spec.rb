@@ -94,4 +94,3 @@ RSpec.describe 'Userモデルのテスト', type: :model do
     end
   end
 end
-# アソシエーションのテスト
