@@ -14,6 +14,7 @@ class AnswersController < ApplicationController
       @answer_question.create_notification_answer!(current_user, @answer.id)
     end
     @answers = @question.answers
+    render 'create.js.erb' #テストに必要
   end
 
   def edit

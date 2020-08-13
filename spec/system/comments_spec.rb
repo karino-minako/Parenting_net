@@ -34,7 +34,7 @@ describe 'コメントのテスト',js: true do
       end
       it 'コメントに失敗する' do
         click_button '送信'
-        expect(page).to have_content 'error'
+        expect(page).to have_content 'エラー'
         expect(current_path).to eq '/posts/' + post.id.to_s + '/comments'
       end
       it 'コメント一覧と表示される' do
@@ -53,18 +53,18 @@ describe 'コメントのテスト',js: true do
       end
     end
     context '自分がコメントした投稿の詳細画面の表示を確認' do
-      it '投稿の編集リンクが表示される' do
+      it 'コメントの編集リンクが表示される' do
         expect(page).to have_link '編集', href: edit_post_comment_path(comment.post,comment)
       end
-      it '投稿の削除リンクが表示される' do
+      it 'コメントの削除リンクが表示される' do
         expect(page).to have_link '削除', href: post_comment_path(comment.post,comment)
       end
     end
-    context '他人の投稿詳細画面の表示を確認' do
-      it '投稿の編集リンクが表示されない' do
+    context '他人がコメントした投稿詳細画面の表示を確認' do
+      it 'コメントの編集リンクが表示されない' do
         expect(page).to have_no_link '編集', href: edit_post_comment_path(comment.post,comment2)
       end
-      it '投稿の削除リンクが表示されない' do
+      it 'コメントの削除リンクが表示されない' do
         expect(page).to have_no_link '削除', href: post_comment_path(comment.post,comment2)
       end
     end
@@ -74,12 +74,12 @@ describe 'コメントのテスト',js: true do
     before do
       visit edit_post_comment_path(comment.post,comment)
     end
-    context '自分の投稿の編集画面への遷移' do
+    context '自分のコメントの編集画面への遷移' do
       it '遷移できる' do
         expect(current_path).to eq("/posts/#{post.id}/comments/#{comment.id}/edit")
       end
     end
-    context '他人の投稿の編集画面への遷移' do
+    context '他人のコメントの編集画面への遷移' do
       it '遷移できない' do
         visit edit_post_comment_path(comment.post,comment2)
         #expect(current_path).to eq('/posts/' + post2.id.to_s)
@@ -107,7 +107,7 @@ describe 'コメントのテスト',js: true do
         visit edit_post_comment_path(comment.post,comment)
         fill_in 'comment[comment]', with: ''
         click_button '変更する'
-        expect(page).to have_content 'error'
+        expect(page).to have_content 'エラー'
         expect(current_path).to eq("/posts/#{post.id}/comments/#{comment.id}")
       end
     end

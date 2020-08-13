@@ -50,7 +50,7 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:answers).macro).to eq :has_many
       end
     end
-    context 'Post_likeモデルとの関係' do
+    context 'PostLikeモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:post_likes).macro).to eq :has_many
       end
@@ -60,12 +60,12 @@ RSpec.describe 'Userモデルのテスト', type: :model do
         expect(User.reflect_on_association(:empathies).macro).to eq :has_many
       end
     end
-    context 'Comment_likeモデルとの関係' do
+    context 'CommentLikeモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:comment_likes).macro).to eq :has_many
       end
     end
-    context 'Answer_likeモデルとの関係' do
+    context 'AnswerLikeモデルとの関係' do
       it '1:Nとなっている' do
         expect(User.reflect_on_association(:answer_likes).macro).to eq :has_many
       end

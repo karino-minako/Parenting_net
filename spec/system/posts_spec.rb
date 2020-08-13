@@ -31,18 +31,18 @@ describe '投稿のテスト' do
         expect(page).to have_field 'post[body]'
       end
       it 'Create Postボタンが表示される' do
-        expect(page).to have_button 'Create Post'
+        expect(page).to have_button '登録する'
       end
       it '投稿に成功する' do
         fill_in 'post[title]', with: Faker::Lorem.characters(number:5)
         fill_in 'post[body]', with: Faker::Lorem.characters(number:20)
-        click_button 'Create Post'
+        click_button '登録する'
         latest_post_id = Post.maximum(:id)
         expect(current_path).to eq '/posts/' + latest_post_id.to_s
       end
       it '投稿に失敗する' do
-        click_button 'Create Post'
-        expect(page).to have_content 'error'
+        click_button '登録する'
+        expect(page).to have_content 'エラー'
         expect(current_path).to eq('/posts')
       end
     end
@@ -87,7 +87,7 @@ describe '投稿のテスト' do
         visit edit_post_path(post)
         fill_in 'post[title]', with: ''
         click_button '変更する'
-        expect(page).to have_content 'error'
+        expect(page).to have_content 'エラー'
         expect(current_path).to eq '/posts/' + post.id.to_s
       end
     end
