@@ -1,7 +1,8 @@
 <div class="sidebar-heading h3">投稿のタグ一覧</div>
 <% tags.each do |tag| %>
-  ・<%= link_to tag.name, posts_path(tag_name: tag.name) %><br>
-  <br>
+  <span class="button">
+    <%= link_to tag.name, posts_path(tag_name: tag.name), class: 'btn btn-success'%>
+  </span>
 <% end %>
 
 <div class="sidebar-heading h3">投稿<br>

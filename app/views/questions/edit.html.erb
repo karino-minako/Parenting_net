@@ -20,7 +20,7 @@
         </div>
 
         <div class="field">
-          <%= f.label :tag_list, 'タグをスペース区切りで入力' %>
+          <%= f.label :tag_list, 'タグ（タグはスペース区切り・１つのタグに対して８文字以内で入力してください）' %>
           <%= f.text_field :tag_list, value: @question.tag_list.join(' '), class: "form-control" %>
         </div>
 

@@ -5,7 +5,7 @@
     <% else %>
       <div class="col-md-12 col-sm-12">
     <% end %>
-      <p class="flash_message"><%= flash[:notice] %></p>
+      <div class="flash_message h4"><%= flash[:notice] %></div>
       <div class="top-heading h3">投稿ランキング</div>
       <div class="top-heading h3">
         （ <i class="fas fa-thumbs-up" aria-hidden="true"></i> いいね順）トップ３
@@ -37,8 +37,7 @@
               </td>
               <td>
                 <% post.tag_list.each do |tag| %>
-                  ・<%= link_to tag, posts_path(tag_name: tag) %><br>
-                  <br>
+                  <%= link_to tag, posts_path(tag_name: tag), class: 'button btn btn-success' %>
                 <% end %>
               </td>
             </tr>

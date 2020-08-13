@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-9 col-sm-12">
       <h3>会員詳細</h3>
-      <p class="flash_message"><%= flash[:user] %></p>
+      <div class="flash_message h4"><%= flash[:user] %></div>
         <% if current_user.id == @user.id %>
           <% if @user.email != "guest@example.com" %>
             <span><%= link_to "会員情報を編集する", edit_user_path(@user) %></span>
