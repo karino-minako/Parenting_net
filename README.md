@@ -2,6 +2,7 @@
 
 ## サイト概要
 子育ての楽しみや悩みを共有したり相談ができるサイト
+
 <img width="1078" alt="readme" src="https://user-images.githubusercontent.com/63790886/90303987-1e4a7400-deee-11ea-83a6-7fce85a69b04.png">
 
 ### サイトテーマ
