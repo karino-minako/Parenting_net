@@ -3,7 +3,7 @@
 ## サイト概要
 子育ての楽しみや悩みを共有したり相談ができるサイト
 
-<img width="1078" alt="readme" src="https://user-images.githubusercontent.com/63790886/90303987-1e4a7400-deee-11ea-83a6-7fce85a69b04.png">
+<img width="873" alt="readme-fix" src="https://user-images.githubusercontent.com/63790886/90463496-0836f080-e146-11ea-930f-f3b78a13f6a5.png">
 
 ### サイトテーマ
 子供を育てている人の不安や孤独感を解消する
@@ -16,6 +16,9 @@
 
 ### 主な利用シーン
 子育てで困ったことがあるとき、子育ての体験を共有したいとき
+
+## チャット＆通知機能
+![chat](https://user-images.githubusercontent.com/63790886/90504521-2e7f7f00-e18c-11ea-8e95-2d3279e91080.gif)
 
 ## 設計書
 
