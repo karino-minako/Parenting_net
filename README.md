@@ -38,7 +38,7 @@
 <img width="942" alt="mail" src="https://user-images.githubusercontent.com/63790886/90583547-6679d700-e20b-11ea-8e44-c13fcdf07b63.png">
 
 ### チャット(Gemを使わずに実装)＆通知機能
-![chat](https://user-images.githubusercontent.com/63790886/90504521-2e7f7f00-e18c-11ea-8e95-2d3279e91080.gif)
+![chat-move](https://user-images.githubusercontent.com/63790886/90602164-41e62500-e234-11ea-99b3-029ba0199360.gif)
 
 ## 設計書
 
