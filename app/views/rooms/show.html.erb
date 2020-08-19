@@ -1,33 +1,14 @@
 <div class="container">
   <div class="row">
     <div class="col-md-9 col-sm-12">
-      <h3>チャット</h3>
       <div class="chats_area">
-        <h4>参加者</h4>
         <% @entries.each do |entry| %>
           <% if current_user != entry.user %>
-            <h5><strong><%= link_to entry.user.name, user_path(entry.user) %>さん</strong></h5>
+            <h4><strong><%= link_to entry.user.name, user_path(entry.user) %>さんとのチャットルームです</strong></h4>
           <% end %>
         <% end %>
+        <br>
 
-        <hr>
-        <% if @messages.present? %>
-          <% @messages.each do |message| %>
-            <% if current_user == message.user %>
-              <div class="message my_message">
-                <%= safe_join(message.content.split("\n"), tag(:br)) %><br>
-                <!-- safe_joinによって改行が反映される -->
-              </div>
-            <% else %>
-              <div class="message other_message">
-                <%= safe_join(message.content.split("\n"), tag(:br)) %><br>
-              </div>
-            <% end %>
-          <% end %>
-        <% else %>
-          <h4 class="text_center">メッセージはまだありません</h4>
-        <% end %>
-        <%= paginate @messages %>
         <%= form_for @message do |f| %>
           <%= f.text_field :content, :placeholder => "メッセージを入力して下さい", class: "form-control" %>
           <%= f.hidden_field :room_id, :value => @room.id %>
@@ -35,6 +16,33 @@
             <%= f.submit "送信", class: 'btn btn-primary col-xs-12'%>
           </div>
         <% end %>
+
+        <hr>
+        <% if @messages.present? %>
+          <% @messages.each do |message| %>
+            <% if current_user == message.user %>
+              <div class="my_message_area">
+                <div class="message my_message">
+                  <%= safe_join(message.content.split("\n"), tag(:br)) %>
+                  <!-- safe_joinによって改行が反映される -->
+                </div><br>
+                <div class="message_time">
+                  <%= message.created_at.strftime("%m/%d %H:%M") %><br>
+                </div>
+              </div>
+            <% else %>
+              <div class="message other_message">
+                <%= safe_join(message.content.split("\n"), tag(:br)) %>
+              </div><br>
+              <div class="message_time">
+                <%= message.created_at.strftime("%m/%d %H:%M") %><br>
+              </div>
+            <% end %>
+          <% end %>
+        <% else %>
+          <h4 class="text_center">メッセージはありません</h4>
+        <% end %>
+        <%= paginate @messages %>
       </div>
     </div>
 

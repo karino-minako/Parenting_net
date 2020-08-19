@@ -182,16 +182,20 @@ header {
     max-width: 50%;
     padding: 7px;
     border-radius: 10px;
+    display: inline-block;
+    margin-top: 7px;
   }
-  .my_message {
-    margin: 0 0 0 auto; // 要素ごと右寄せ
+  .my_message_area {
     text-align: right;
-    margin-bottom: 10px;
-    background: rgba(30, 255, 0, 0.7);
+    .my_message {
+      background: rgba(30, 255, 0, 0.7);
+    }
   }
   .other_message {
-    margin-bottom: 10px;
     background: #CDE3F1;
+  }
+  .message_time{
+    color: #aaa;
   }
   .text_center {
     text-align: center;
