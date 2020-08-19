@@ -3,22 +3,13 @@
 # 子育てネット
 
 ## サイト概要
-ご覧いただきありがとうございます。こちらは就職活動のためポートフォリオとして作成したSNS Web アプリケーションです。 (4月16日学習開始 / 7月15日公開)
+ご覧いただきありがとうございます。こちらは就職活動のためポートフォリオとして作成したSNSとQ&A両方の形式を組み合わせた Web アプリケーションです。 (4月16日学習開始 / 7月15日公開)
+<br>
 サイトへはこちらから(https://parenting-net-2.work/)
 
-子育ての楽しみや悩みを共有したり相談ができるサイトです。
-
-### サイトテーマ
-子供を育てている人の不安や孤独感を解消する
-
-### テーマを選んだ理由
-将来子供が授かれたとき、子育てしている人や経験者に相談や話ができるところがあれば助かると考えたからです。
-
-### ターゲットユーザ
-子供を育てる人・自分の経験を人の役に立てたいと思っている子育てや保育経験者
-
-### 主な利用シーン
-子育てで困ったことがあるとき、子育ての体験を共有したいとき
+## なぜ子育てネットを作ったか
+子育てネットは子育てに関する日常の共有や悩みの解決を目的とした　SNS + Q&A サイトです。
+現状、子育てに関するサイトは、SNS・Q&Aどちらかの形式が多いと考え、両方の形式を取り入れたサイトがあれば、より多くのユーザに使ってもらうことが可能になると考えました。
 
 ## 技術面
 ### 言語・環境等
@@ -44,15 +35,15 @@
 ## スクリーンショット
 
 ### ActionMailerを利用した新規登録完了メール
-<img width="1007" alt="mail" src="https://user-images.githubusercontent.com/63790886/90516685-51675e80-e19f-11ea-938e-b4dcf32099b9.png">
+<img width="942" alt="mail" src="https://user-images.githubusercontent.com/63790886/90583547-6679d700-e20b-11ea-8e44-c13fcdf07b63.png">
 
-### チャット＆通知機能
+### チャット(Gemを使わずに実装)＆通知機能
 ![chat](https://user-images.githubusercontent.com/63790886/90504521-2e7f7f00-e18c-11ea-8e95-2d3279e91080.gif)
 
-### レスポンシブ対応
-![image](https://user-images.githubusercontent.com/63790886/90508601-00516d80-e193-11ea-83a5-923f06b74687.png)
-
 ## 設計書
+
+### AWS構成図
+<img width="419" alt="aws" src="https://user-images.githubusercontent.com/63790886/90584272-39c6bf00-e20d-11ea-91e8-154877eea2e3.png">
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1LJX8CJAoy1UPZLBxU8R3bZ3ZLrB5h5Uk23fIBGNPHkA/edit?usp=sharing
