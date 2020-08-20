@@ -2,19 +2,19 @@
   <div class="row">
     <div class="col-md-9 col-sm-12">
       <h3>会員詳細</h3>
-      <div class="flash_message h4"><%= flash[:user] %></div>
+      <div class="flash_message h5"><%= flash[:user] %></div>
         <% if current_user.id == @user.id %>
           <% if @user.email != "guest@example.com" %>
-            <span><%= link_to "会員情報を編集する", edit_user_path(@user) %></span>
+            <span><%= link_to "会員情報を編集する", edit_user_path(@user), class: "button btn btn-warning" %></span>
           <% end %>
         <% end %>
 
       <table class="table table-hover table-inverse">
         <thead>
           <tr>
-            <th>名前</th>
-            <th>自己紹介文</th>
-            <th colspan="2"></th>
+            <th class="th-02">名前</th>
+            <th class="th-04"></th>
+            <th class="th-04"></th>
           </tr>
         </thead>
 
@@ -27,11 +27,8 @@
               <%= @user.name %>
             </td>
             <td>
-              <%= simple_format @user.introduction %>
-            </td>
-            <td>
-              フォロー数：<%= link_to @user.follower.count, user_follows_path(@user) %><br>
-              フォロワー数：<%= link_to @user.followed.count, user_followers_path(@user) %>
+              フォロー：<%= link_to @user.follower.count, user_follows_path(@user) %><br>
+              フォロワー：<%= link_to @user.followed.count, user_followers_path(@user) %>
             </td>
             <td>
               <!-- フォローボタン -->
@@ -46,7 +43,13 @@
           </tr>
         </tbody>
       </table>
-
+      <% if @user.email != "guest@example.com" %>
+        <% if @user.introduction != nil %>
+          <p>自己紹介文</p>
+          <%= simple_format @user.introduction %>
+          <br>
+        <% end %>
+      <% end %>
       <% if @user.id != current_user.id %>
         <% if @isRoom == true %>
           <%= link_to room_path(@roomId) do %>
@@ -61,13 +64,15 @@
           <% end %>
         <% end %>
       <% else %>
-        <%= link_to 'チャット相手の一覧画面へ', rooms_path %>
+        <%= link_to 'チャット相手の一覧画面へ', rooms_path, class: "button btn btn-info" %>
       <% end %>
+      <div class="border-user"></div>
+      <br>
 
       <h3>投稿一覧</h3>
       <%= render 'posts/index', posts: @posts %>
       <%= paginate @posts %>
-
+      <br>
       <h3>質問一覧</h3>
       <%= render 'questions/index', questions: @questions %>
       <%= paginate @questions %>

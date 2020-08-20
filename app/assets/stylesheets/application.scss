@@ -142,7 +142,7 @@ header {
   margin-top: 60px;
 }
 .border {
-  border-bottom: 2px silver solid;
+  border-bottom: 2px #DDDDDD solid;
 }
 .image {
   position: relative;
@@ -150,6 +150,9 @@ header {
 .image img {
   display: block;
   margin: 0 auto;
+}
+.button-right {
+  text-align: right;
 }
 
 // トップページのランキング,投稿一覧,質問一覧,会員詳細のテーブル
@@ -173,6 +176,12 @@ header {
 }
 .fa-smile {
   color: orange;
+}
+
+// 会員詳細ページ
+.border-user {
+  border-bottom: 2px #DDDDDD solid;
+  margin: 20px 0px 20px 0px;
 }
 
 // チャットページ

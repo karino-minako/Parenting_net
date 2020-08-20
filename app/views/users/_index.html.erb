@@ -1,8 +1,9 @@
 <table class="table table-hover table-inverse">
   <thead>
     <tr>
-      <th>名前</th>
-      <th colspan="2"></th>
+      <th class="th-02">名前</th>
+      <th class="th-04"></th>
+      <th class="th-04"></th>
     </tr>
   </thead>
   <tbody>
@@ -25,9 +26,9 @@
           <% end %>
         </td>
         <td>
-          フォロー数：<%= user.follower.count %>
+          フォロー：<%= user.follower.count %>
           <br>
-          フォロワー数：<%= user.followed.count %>
+          フォロワー：<%= user.followed.count %>
         </td>
       </tr>
     <% end %>

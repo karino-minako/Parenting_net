@@ -9,7 +9,7 @@ class QuestionsController < ApplicationController
     @question = Question.new(question_params)
     @question.user_id = current_user.id
     if @question.save
-      flash[:question_show] = "< 質問しました！ >"
+      flash[:question_show] = "質問しました！"
       redirect_to question_path(@question)
     else
       render action: :new
@@ -47,7 +47,7 @@ class QuestionsController < ApplicationController
   def update
     @question = Question.find(params[:id])
     if @question.update(question_params)
-      flash[:question_show] = "< 質問を編集しました！ >"
+      flash[:question_show] = "質問を編集しました！"
       redirect_to question_path(@question)
     else
       render :edit
@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
   def destroy
     question = Question.find(params[:id])
     question.destroy
-    flash[:question] = "< 質問を削除しました！ >"
+    flash[:question] = "質問を削除しました！"
     redirect_to questions_path
   end
 

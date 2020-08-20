@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     @comment.user_id = current_user.id
     @comment_post = @comment.post
     if @comment.save
-      flash[:comment] = "< コメントしました！ >"
+      flash[:comment] = "コメントしました！"
       #通知の作成
       @comment_post.create_notification_comment!(current_user, @comment.id)
     end
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
-      flash[:comment] = "< コメントを編集しました！ >"
+      flash[:comment] = "コメントを編集しました！"
       redirect_to post_path(@comment.post)
     else
       render 'edit'
@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
       redirect_to request.referer
     end
     @comment.destroy
-    flash[:comment] = "< コメントを削除しました！ >"
+    flash[:comment] = "コメントを削除しました！"
   end
 
   private

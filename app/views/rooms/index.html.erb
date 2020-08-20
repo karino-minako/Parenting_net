@@ -5,8 +5,9 @@
       <table class="table table-hover table-inverse">
       	<thead>
           <tr>
-            <th>名前</th>
-            <th colspan="3"></th>
+            <th class="th-02">名前</th>
+            <th class="th-04"></th>
+            <th class="th-04"></th>
           </tr>
         </thead>
         <tbody>
@@ -32,11 +33,6 @@
                     <%= link_to 'フォローする', user_relationships_path(e.user.id), method: :POST, class: "btn btn-success" %>
                   <% end %>
                 <% end %>
-              </td>
-              <td>
-                フォロー数：<%= e.user.follower.count %>
-                <br>
-                フォロワー数：<%= e.user.followed.count %>
               </td>
             </tr>
           <% end %>
