@@ -34,11 +34,14 @@
 
 ## スクリーンショット
 
+### レスポンシブ対応
+![responsive-move](https://user-images.githubusercontent.com/63790886/90758438-fefe7d00-e319-11ea-99a7-875d61d24ae8.gif)
+
 ### ActionMailerを利用した新規登録完了メール
 <img width="942" alt="mail" src="https://user-images.githubusercontent.com/63790886/90583547-6679d700-e20b-11ea-8e44-c13fcdf07b63.png">
 
 ### チャット(Gemを使わずに実装)＆通知機能
-![chat-move](https://user-images.githubusercontent.com/63790886/90638596-7f64a580-e268-11ea-8b42-0c34f9119bda.gif)
+![chat-move](https://user-images.githubusercontent.com/63790886/90755969-c01af800-e316-11ea-9795-9cbfa87cdac4.gif)
 
 ## 設計書
 
