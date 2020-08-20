@@ -9,11 +9,9 @@
             <th class="th-02">名前</th>
             <th class="th-03">タイトル</th>
             <th class="th-01"></th>
-            <th class="th-03">タグ</th>
-            <th class="th-01"></th>
+            <th class="th-04">タグ</th>
           </tr>
         </thead>
-
         <tbody>
           <tr class="post_<%= @post.id %>">
             <%= render 'posts/show', post: @post %>
@@ -49,6 +47,12 @@
       <% end %>
       <div class="content-heading h5">内容</div>
       <div class="blank"><%= simple_format @post.body %></div>
+      <% if @post.user.id == current_user.id %>
+        <div class="button-right">
+          <%= link_to "編集", edit_post_path(@post), class: 'button btn btn-warning' %>
+          <%= link_to "削除", post_path(@post), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'button btn btn-danger' %>
+        </div>
+      <% end %>
       <div class="border"></div>
       <div class="comment-answer h3">コメントする</div>
       <div class="comment_errors">
