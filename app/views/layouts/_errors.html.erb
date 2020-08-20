@@ -1,6 +1,6 @@
 <% if obj.errors.any? %>
   <div id="error_explanation">
-    <h3><%= pluralize(obj.errors.count, "件のエラー") %> が発生したため保存できませんでした。</h3>
+    <h4><%= pluralize(obj.errors.count, "件のエラー") %> が発生したため保存できませんでした。</h4>
     <ul>
       <% obj.errors.full_messages.each do |message| %>
         <li><%= message %></li>

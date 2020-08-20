@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
     @answer_question = @answer.question
     if @answer.save
-      flash[:answer] = "< 回答しました！ >"
+      flash[:answer] = "回答しました！"
       #通知の作成
       @answer_question.create_notification_answer!(current_user, @answer.id)
     end
@@ -24,7 +24,7 @@ class AnswersController < ApplicationController
   def update
     @answer = Answer.find(params[:id])
     if @answer.update(answer_params)
-      flash[:answer] = "< コメントを編集しました！ >"
+      flash[:answer] = "回答を編集しました！"
       redirect_to question_path(@answer.question)
     else
       render 'edit'
@@ -38,7 +38,7 @@ class AnswersController < ApplicationController
       redirect_to request.referer
     end
     @answer.destroy
-    flash[:answer] = "< 回答を削除しました！ >"
+    flash[:answer] = "回答を削除しました！"
   end
 
   private
